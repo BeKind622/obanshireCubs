@@ -5,8 +5,10 @@ import Register from './pages/shared/Register';
 import Home from './pages/shared/Home';
 import './App.css';
 
+
 const App = () => {
   return (
+    
     <Router>
       <div>
         <nav>
