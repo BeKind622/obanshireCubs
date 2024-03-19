@@ -10,7 +10,7 @@ const patientLogin = () => {
 </div>
 
 <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
-  <h1 class="text-2xl font-semibold mb-4">Login</h1>
+  <h1 class="text-2xl font-semibold mb-4">Patient Login</h1>
   <form action="#" method="POST">
    
     <div class="mb-4">
