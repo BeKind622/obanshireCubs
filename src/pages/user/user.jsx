@@ -1,3 +1,0 @@
-<>
-<p>patient / user </p>
-</>

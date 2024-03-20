@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Login from './pages/shared/PatientLogin';
-import PLogin from './pages/shared/ParentLogin';
+import Login from './pages/shared/patientLogin';
+import PLogin from './pages/shared/parentLogin';
 // import Register from './pages/shared/Register';
 import Home from './pages/shared/Home';
-import Games from './pages/user/Games';
+import Games from './pages/users/Games';
+import Dashboard from '/pages/user/User';
 import './App.css';
 
 const App = () => {
@@ -27,7 +28,7 @@ const App = () => {
                <Link to="/" className="mr-5 font-medium hover:text-gray-900">Home </Link>
                <Link to="/Games" className="mr-5 font-medium hover:text-gray-900">Games </Link>
                 <Link to="/ParentDashboard" className="mr-5 font-medium hover:text-gray-900">Parent Dashboard</Link>
-                <Link to="/PatientDashboard" className="font-medium hover:text-gray-900">Patient Dashboard</Link>
+                <Link to="/pDashboard" className="font-medium hover:text-gray-900">Patient Dashboard</Link>
             </nav>
             <div className="items-center h-full pl-6 ml-6 border-l border-gray-200">
             <Link to="/ParentLogin"className="mr-5 font-medium hover:text-gray-900">Parent login </Link>
@@ -44,6 +45,7 @@ const App = () => {
           <Route path="/Games" element={<Games />} />
           <Route path="/PatientLogin" element={<Login />} />
           <Route path="/ParentLogin" element={<PLogin />} />
+          <Route path="/pDashboard" element={<Dashboard />} />
           <Route path="/" element={<Home />} />
 
           
