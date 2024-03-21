@@ -1,6 +1,13 @@
-import React from 'react';
-
-const patientLogin = () => {
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
+const Login = () => {
+  
+    // const[patient_number, setPatientNumber] = isState('');
+    // const[password, setPassword] = useState('');
+    // const [parent, setParent] = useState(false); //State for the checkbox
+    // const navigate = useNavigate();
+  
   return (
     <>
      <div class="bg-gray-100 flex justify-center items-center w-screen h-screen overflow-hidden relative">
@@ -44,4 +51,5 @@ const patientLogin = () => {
     </>
   );
 };
-export default patientLogin;
+
+export default Login;

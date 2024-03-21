@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Dashboard = () => {
+const UserDashboard = () => {
   return (
 
 
@@ -206,15 +206,15 @@ const Dashboard = () => {
                         </div>
                     </div>
 
-                    <div className="mt-4">
+                    {/* <div className="mt-4">
                         <canvas id="verticalBarChart" style="display: block; box-sizing: border-box; height: 414px; width: 828px;" width="1656" height="828"></canvas>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
 </>
   )
-}
+};
 
-export default User; Dashboard;
+export default UserDashboard;
 
