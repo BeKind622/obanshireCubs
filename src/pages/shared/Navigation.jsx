@@ -1,27 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { Routes, Router, Route, Link, useNavigate } from 'react-router-dom';
-import Login from './Login';
-import Games from '../users/Games';
-import UserDashboard from '../users/User';
-import Home from './Home';
+import React, { useState } from 'react';
+import {Link} from 'react-router-dom';
+
 
 const Navigation = () => {
-    const handleLogout = () => {
-        // Remove the token from local storage
-        localStorage.removeItem('token');
+    // const handleLogout = () => {
+    //     // Remove the token from local storage
+    //     localStorage.removeItem('token');
     
-        // Redirect to the login page or another desired route
-        navigate('/');
-      };
+    //     // Redirect to the login page or another desired route
+    //     navigate('/');
+    //   };
     
-      const [token, setToken] = useState(null);
-      const [parent, setParent] = useState(false);
+    //   const [token, setToken] = useState(null);
+    //   const [parent, setParent] = useState(false);#
+    return (
 
-      <Router>
-      <div>
-        
-    
-    <header className="w-full mt-5 text-gray-700 bg-white shadow-sm body-font">
+      
+      <div> 
+        <header className="w-full mt-5 text-gray-700 bg-white shadow-sm body-font">
         <div className="container flex flex-col items-start p-6 mx-auto md:flex-row">
             <a className="flex items-center mb-4 font-medium text-gray-900 title-font md:mb-0">
                 <svg className=" w-auto h-5 text-gray-900 fill-current" viewBox="0 0 202 69"
@@ -46,17 +42,10 @@ const Navigation = () => {
    
 
 
-        <Routes>
-          
-          <Route path="/Games" element={<Games />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/UserDashboard" element={<UserDashboard />} />
-          <Route path="/" element={<Home />} />
-
-          
-        </Routes>
+       
       </div>
-    </Router>
+    
+    )
 }
 
 
