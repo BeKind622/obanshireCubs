@@ -9,10 +9,11 @@ const App = () => {
   
   return (
     
-    <div className="flex bg-white">       
+    <div className="  bg-white">       
       <Router>
         <Navigation />
         <div>
+          
         <Routes className="flex">
             <Route path="/Games" element={<Games />} />
             <Route path="/Login" element={<Login />} />
