@@ -9,7 +9,7 @@ const App = () => {
   
   return (
     
-    <div className="  bg-white">       
+    <div className="  bg-white w-full">       
       <Router>
         <Navigation />
         <div>

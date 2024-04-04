@@ -1,18 +1,58 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const UserDashboard = () => {
+    const [user, setUser] = useState(null);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      const fetchUserData = async () => {
+        try {
+          // Retrieve the token from local storage
+          const token = localStorage.getItem('token');
+          console.log(token);
+  
+          if (!token) {
+            console.error('No token found');
+            return;
+          }
+  
+          // Make a GET request to the /api/users endpoint with the token in the headers
+          const response = await axios.get('http://localhost:5000/api/users', {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+  
+          // Update the state with the received user data
+          setUser(response.data);
+        } catch (error) {
+          console.error('Error fetching user data:', error);
+        }
+      };
+   // Call the fetchUserData function when the component mounts
+   fetchUserData();
+}, []); // The empty dependency array ensures this effect runs only once on component mount
+const handleLogout = () => {
+    // Remove the token from local storage
+    localStorage.removeItem('token');
+
+    // Redirect to the login page or another desired route
+    navigate('/login');
+  };
   return (
 
 
 <>
-<div className="my-4 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
+<div className="flex flex-col w-full ">
             <div className="w-full flex flex-col 2xl:w-1/3">
                 <div className="flex-1 bg-white rounded-lg shadow-xl p-8">
                     <h4 className="text-xl text-gray-900 font-bold">Personal Info</h4>
-                    <ul className="mt-2 text-gray-700">
+                    <ul className="mt-2 text-gray-700" >
                         <li className="flex border-y py-2">
-                            <span className="font-bold w-24">Full name:</span>
-                            <span className="text-gray-700">Amanda S. Ross</span>
+                            <span className="font-bold w-24">Full name: </span>
+                            <span className="text-gray-700"></span>
                         </li>
                         <li className="flex border-b py-2">
                             <span className="font-bold w-24">Birthday:</span>
@@ -58,82 +98,27 @@ const UserDashboard = () => {
                 
             </div>
             <div className="flex flex-col w-full 2xl:w-2/3">
-                <div className="flex-1 bg-white rounded-lg shadow-xl p-8">
-                    <h4 className="text-xl text-gray-900 font-bold">About</h4>
-                    <p className="mt-2 text-gray-700">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt voluptates obcaecati numquam error et ut fugiat asperiores. Sunt nulla ad incidunt laboriosam, laudantium est unde natus cum numquam, neque facere. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, magni odio magnam commodi sunt ipsum eum! Voluptas eveniet aperiam at maxime, iste id dicta autem odio laudantium eligendi commodi distinctio!</p>
-                </div>
-                <div className="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8">
-                    <h4 className="text-xl text-gray-900 font-bold">Statistics</h4>
-                    
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-4">
-                        <div className="px-6 py-6 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
-                            <div className="flex items-center justify-between">
-                                <span className="font-bold text-sm text-indigo-600">Total Revenue</span>
-                                <span className="text-xs bg-gray-200 hover:bg-gray-500 text-gray-500 hover:text-gray-200 px-2 py-1 rounded-lg transition duration-200 cursor-default">7 days</span>
-                            </div>
-                            <div className="flex items-center justify-between mt-6">
-                                <div>
-                                    <svg className="w-12 h-12 p-2.5 bg-indigo-400 bg-opacity-20 rounded-full text-indigo-600 border border-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                </div>
-                                <div className="flex flex-col">
-                                    <div className="flex items-end">
-                                        <span className="text-2xl 2xl:text-3xl font-bold">$8,141</span>
-                                        <div className="flex items-center ml-2 mb-1">
-                                            <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                                            <span className="font-bold text-sm text-gray-500 ml-0.5">3%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="px-6 py-6 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
-                            <div className="flex items-center justify-between">
-                                <span className="font-bold text-sm text-green-600">New Orders</span>
-                                <span className="text-xs bg-gray-200 hover:bg-gray-500 text-gray-500 hover:text-gray-200 px-2 py-1 rounded-lg transition duration-200 cursor-default">7 days</span>
-                            </div>
-                            <div className="flex items-center justify-between mt-6">
-                                <div>
-                                    <svg className="w-12 h-12 p-2.5 bg-green-400 bg-opacity-20 rounded-full text-green-600 border border-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-                                </div>
-                                <div className="flex flex-col">
-                                    <div className="flex items-end">
-                                        <span className="text-2xl 2xl:text-3xl font-bold">217</span>
-                                        <div className="flex items-center ml-2 mb-1">
-                                            <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                                            <span className="font-bold text-sm text-gray-500 ml-0.5">5%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="px-6 py-6 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
-                            <div className="flex items-center justify-between">
-                                <span className="font-bold text-sm text-blue-600">New Connections</span>
-                                <span className="text-xs bg-gray-200 hover:bg-gray-500 text-gray-500 hover:text-gray-200 px-2 py-1 rounded-lg transition duration-200 cursor-default">7 days</span>
-                            </div>
-                            <div className="flex items-center justify-between mt-6">
-                                <div>
-                                    <svg className="w-12 h-12 p-2.5 bg-blue-400 bg-opacity-20 rounded-full text-blue-600 border border-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                                </div>
-                                <div className="flex flex-col">
-                                    <div className="flex items-end">
-                                        <span className="text-2xl 2xl:text-3xl font-bold">54</span>
-                                        <div className="flex items-center ml-2 mb-1">
-                                            <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                                            <span className="font-bold text-sm text-gray-500 ml-0.5">7%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* <div className="mt-4">
-                        <canvas id="verticalBarChart" style="display: block; box-sizing: border-box; height: 414px; width: 828px;" width="1656" height="828"></canvas>
-                    </div> */}
-                </div>
+                
+               
             </div>
         </div>
+         <h2>User Dashboard</h2>
+      {user && (
+
+      <ul key={user._id} >
+        
+          <li>{user._id}</li>
+          <li>{user.forename}</li>
+          <li>{user.surname}</li>
+          <li>{user.email}</li>
+          <li>{user.department}</li>
+          <li>{user.guardian}</li>
+          <li>{user.guardian_name}</li>
+          <li>{user.notes}</li>
+          
+      
+      </ul>
+      )}
 </>
   )
 };
