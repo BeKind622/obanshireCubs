@@ -12,7 +12,7 @@ const Register = () => {
       <p className="w-80 text-center text-sm mb-8 font-semibold text-gray-700 tracking-wide cursor-pointer">Create an account to enjoy all the services without any ads for free!</p>
     </div>
     <div className="space-y-4">
-      <input type="text" placeholder="Email Addres" className="block text-sm py-3 px-4 rounded-lg w-full border outline-purple-500" />
+      <input type="text" placeholder="Email Address" className="block text-sm py-3 px-4 rounded-lg w-full border outline-purple-500" />
       <input type="text" placeholder="Password" className="block text-sm py-3 px-4 rounded-lg w-full border outline-purple-500" />
     </div>
     <div className="text-center mt-6">

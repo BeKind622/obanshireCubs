@@ -34,19 +34,13 @@ const UserDashboard = () => {
    // Call the fetchUserData function when the component mounts
    fetchUserData();
 }, []); // The empty dependency array ensures this effect runs only once on component mount
-const handleLogout = () => {
-    // Remove the token from local storage
-    localStorage.removeItem('token');
 
-    // Redirect to the login page or another desired route
-    navigate('/login');
-  };
   return (
 
 
-<>
-<div className="flex flex-col w-full ">
-            <div className="w-full flex flex-col 2xl:w-1/3">
+<div>
+<div className="flex flex-col ">
+            <div className="w-full flex flex-col">
                 <div className="flex-1 bg-white rounded-lg shadow-xl p-8">
                     <h4 className="text-xl text-gray-900 font-bold">Personal Info</h4>
                     <ul className="mt-2 text-gray-700" >
@@ -97,10 +91,7 @@ const handleLogout = () => {
                 </div>
                 
             </div>
-            <div className="flex flex-col w-full 2xl:w-2/3">
-                
-               
-            </div>
+           
         </div>
          <h2>User Dashboard</h2>
       {user && (
@@ -119,7 +110,7 @@ const handleLogout = () => {
       
       </ul>
       )}
-</>
+</div>
   )
 };
 

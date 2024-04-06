@@ -2,11 +2,52 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 const Login = () => {
+  const [email, setEmail] = useState(""); // Changed to email
+  const [password, setPassword] = useState("");
+  const [parent, setParent] = useState(false);
+  const navigate = useNavigate();
   
-    // const[patient_number, setPatientNumber] = isState('');
-    // const[password, setPassword] = useState('');
-    // const [parent, setParent] = useState(false); //State for the checkbox
-    // const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
+  
+  
+  const handleLogin = async (e) => {
+      e.preventDefault();
+      try {   
+          const response = await axios.post("http://localhost:5000/api/login", {
+              email, // Use email instead of patient_number
+              password
+          });
+  
+          console.log('Login successful');
+          console.log('Token:', response.data.token);
+  
+          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("email", email); // Store email instead of patient_number
+  
+  
+  
+          if (parent) {
+              localStorage.setItem("parent", 'true');
+              navigate("/ParentDashboard");
+          } else {
+              localStorage.removeItem("parent");
+              navigate("/UserDashboard");
+          }
+      } catch (error) {
+          console.error('Login failed', error.response.data.error);
+          setErrorMessage("Invalid email or password. Please try again."); // Set error message
+  
+      }
+  };
+  
+  useEffect(() => {
+      const storedParent = localStorage.getItem("parent");
+      if (storedParent) {
+          setParent(true);
+      }
+  }, []);
+  
+  
   
   return (
     <>
@@ -21,30 +62,46 @@ const Login = () => {
   <form action="#" method="POST">
    
     <div className="mb-4">
-      <label for="username" className="block text-gray-600">Username</label>
-      <input type="text" id="username" name="username" className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" autocomplete="off"/>
+      <label for="email" className="block text-gray-600">Email</label>
+      <input 
+                        type="email" 
+                        id="email" 
+                        value={email} 
+                        onChange={(e) => setEmail(e.target.value)} 
+                        className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none "
+                    />
     </div>
    
     <div className="mb-4">
       <label for="password" className="block text-gray-600">Password</label>
-      <input type="password" id="password" name="password" className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" autocomplete="off"/>
+      <input  type="password"
+              id="password" 
+              name="password" 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" autocomplete="off"/>
     </div>
   
     <div className="mb-4 flex items-center">
       <input type="checkbox" id="remember" name="remember" className="text-blue-500"/>
       <label for="remember" className="text-gray-600 ml-2">Remember Me</label>
     </div>
+    <div>
+                <label  className="inline-flex items-center mt-3" htmlFor="checkbox_id">
+                  <input  className="form-checkbox h-5 w-5 text-gray-600 mr-2 text-blue-900" type="checkbox" id="checkbox_id" checked={parent} onChange={() => setParent(!parent)} />
+                  <span className="text-sm font-medium text-gray-700">Parent/Guardian please select</span>  
+                  </label>
+                </div>
   
     <div className="mb-6 text-blue-500">
       <a href="#" className="hover:underline">Forgot Password?</a>
     </div>
   
-    <button type="submit" classNameName="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full">Login</button>
+    <button type="submit" onClick={handleLogin} className="w-full bg-blue-900 text-white p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-black focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300">Login</button>
   </form>
  
-  <div className="mt-6 text-blue-500 text-center">
-    <a href="#" className="hover:underline">Sign up Here</a>
-  </div>
+  
+ 
 </div>
 </div>
       

@@ -5,7 +5,7 @@ import gameData from '../../json/games.json';
 const Games = () => {
     return (
         <>
-        <div className="w-screen h-screen overflow-hidden relative before:block before:absolute before:bg-black before:h-full before:w-full before:top-0 before:left-0 before:z-10 before:opacity-0">
+        <div className="w-screen h-screen overflow-hidden relative ">
         {gameData.map((game, index) => (
             <Game
             key ={index}

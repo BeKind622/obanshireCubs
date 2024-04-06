@@ -3,16 +3,12 @@ import {Link} from 'react-router-dom';
 
 
 const Navigation = () => {
-    // const handleLogout = () => {
-    //     // Remove the token from local storage
-    //     localStorage.removeItem('token');
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     
-    //     // Redirect to the login page or another desired route
-    //     navigate('/');
-    //   };
-    
-    //   const [token, setToken] = useState(null);
-    //   const [parent, setParent] = useState(false);#
+  const handleLogout = () => {
+
+    setIsLoggedIn(false);
+  };
     return (
 
       
@@ -33,8 +29,16 @@ const Navigation = () => {
                 <Link to="/UserDashboard" className="font-medium hover:text-gray-900">Patient Dashboard</Link>
             </nav>
             <div className="items-center h-full pl-6 ml-6 border-l border-gray-200">
-          
-            <Link to="/Login"className="mr-5 font-medium hover:text-gray-900">Login </Link>
+            {isLoggedIn ? (
+              <>
+                {/* Links for authenticated users */}
+                <Link to="/UserDashboard" className="font-medium hover:text-gray-900">Patient Dashboard</Link>
+                <button onClick={handleLogout} className="ml-5 font-medium hover:text-gray-900">Logout</button>
+              </>
+            ) : (
+                <Link to="/Login" className="font-medium hover:text-gray-900">Login</Link>
+            )}
+            
                
             </div>
         </div>

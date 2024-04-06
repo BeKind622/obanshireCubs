@@ -1,15 +1,16 @@
 import React from 'react';
-import Navigation from './pages/shared/Navigation';
+import Navigation from './components/Navigation';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/shared/Login';
 import Games from './pages/users/Games';
 import UserDashboard from './pages/users/User';
+import ParentDashboard from './pages/users/Parent'; 
 import Home from './pages/shared/Home';
 const App = () => {
   
   return (
     
-    <div className="  bg-white w-full">       
+    <div className="">       
       <Router>
         <Navigation />
         <div>
@@ -18,6 +19,7 @@ const App = () => {
             <Route path="/Games" element={<Games />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/UserDashboard" element={<UserDashboard />} />
+            <Route path="/ParentDashboard" element={<ParentDashboard />} />
             <Route path="/" element={<Home />} />
              </Routes>
           </div>
