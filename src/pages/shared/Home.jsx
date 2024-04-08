@@ -13,7 +13,7 @@ const Home = () => {
       <p className="text-stone-100 text-base">
         Any ailments, sicknesses or illnesses you have, we'll cure them right up.
       </p>
-      <button className="mt-8 text-white uppercase py-4 text-base font-light px-10 border border-white hover:bg-white hover:bg-opacity-10">Get started</button>
+      <button className="mt-8 uppercase py-4 text-base font-light px-10 border border-white hover:bg-white hover:bg-opacity-10">Get started</button>
     </div>
   </div>
 </div>
