@@ -1,15 +1,27 @@
 [
     {
-    "image": "https://glasgowclyde.instructure.com/images/thumbn…/1690092/McKdt0VXXpOLKrsFoPIcaeM4Z9pQ3zYgpS6730Hw",
+    "image": "https://cn.i.cdn.ti-platform.com/content/336/bmx-champions/game/uk/bmxchampionsbeta-1920x1080-en.7ecf04f3.jpg",
     "url": "https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_Minecraft.jpg",
-  "name": "Game One",
+  "name": "BMX Champions",
   "description": "Good game"
 },
 
 {
-    "image": "/images/games/battle-with-numbers.avif",
+    "image": "https://cn.i.cdn.ti-platform.com/content/312/penalty-power-2021/game/uk/penaltypower2021-1600x900-en.8fcd32cb.jpg",
     "url": "https://www.cartoonnetwork.co.uk/games/teen-titans-go-battle-with-numbers/play",
-  "name": "Game two",
+  "name": "Penalty Power 2021",
+  "description": "Good game"
+},
+{
+    "image": "https://cn.i.cdn.ti-platform.com/content/20/penalty-power-3/game/za/penaltypower3_1600x900-en-min.00edfc50.jpg",
+    "url": "https://www.cartoonnetwork.co.uk/games/teen-titans-go-battle-with-numbers/play",
+  "name": "Penalty Power",
+  "description": "Good game"
+},
+{
+    "image": "https://cn.i.cdn.ti-platform.com/content/438/jump-joust-2/game/uk/jumpjoust2-1600x900-en.1e8418e1.jpg",
+    "url": "https://www.cartoonnetwork.co.uk/games/teen-titans-go-battle-with-numbers/play",
+  "name": "Jump Jousts 2",
   "description": "Good game"
 }
 ]

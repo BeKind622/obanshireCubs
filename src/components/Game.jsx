@@ -4,7 +4,8 @@ import {Link} from 'react-router-dom';
 const Game = ({image, url, name, description}) => {
 return (
     <>
-    <div className="relative flex w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+    
+    <div className="relative flex w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md gameTile max-h-96 p-2 my-2">
   <div className="p-6">
     <h5 className="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
       {name}
@@ -12,7 +13,7 @@ return (
     <p className="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
       {description}
     </p>
-    <img src={image} alt="karenPic" />
+    <img src={image} alt="Game cover" />
   </div>
   <div className="p-6 pt-0">
   <Link to={url} target="_blank">
