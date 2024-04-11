@@ -23,8 +23,7 @@ return (
       type="button"
       data-ripple-light="true" 
       >
-      Read More
-    </button>
+Play here!    </button>
     </div>
 
   </Link>

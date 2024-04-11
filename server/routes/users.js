@@ -25,8 +25,7 @@ app.get('/api/users', async (req, res) => {
   const formattedUser = {
     _id: user._id,
     email: user.email,
-    forename: user.forename,
-    surname: user.surname,
+    name: user.name,
     department: user.department,
     is_admin: user.is_admin, // Add this line
     guardian: user.guardian, // Add this line
@@ -35,7 +34,10 @@ app.get('/api/users', async (req, res) => {
     dob: user.dob,
     // Add any additional fields you want to include
   };
-  
+
+  const formattedDoc = {
+docName: doc
+  }
   res.json(formattedUser);
   
       });
