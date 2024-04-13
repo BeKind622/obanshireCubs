@@ -25,7 +25,7 @@ app.get('/api/users', async (req, res) => {
   const formattedUser = {
     _id: user._id,
     email: user.email,
-    name: user.name,
+    patient_name: user.patient_name,
     department: user.department,
     is_admin: user.is_admin, // Add this line
     guardian: user.guardian, // Add this line

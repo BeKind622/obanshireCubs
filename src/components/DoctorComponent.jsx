@@ -1,6 +1,8 @@
 import React from 'react';
 // import {Link, useLocation} from 'react-router-dom';
-// import doctors from '../json/doctors'
+import doctors from '../json/doctors'
+
+const docInfo = ({})
 const DashboardMenu = () =>{
 
     return <>
@@ -14,14 +16,14 @@ const DashboardMenu = () =>{
   </div>
   <div className="relative p-6 py-14 px-6 md:px-12">
     <h2 className="mb-6 block font-sans text-4xl font-medium leading-[1.5] tracking-normal text-white antialiased">
-      Office room: {}
+      Office room: {office}
     </h2>
     <h5 className="mb-4 block font-sans text-xl font-semibold leading-snug tracking-normal text-gray-400 antialiased">
-      {}
+      {name}
     </h5>
     <img
       alt="tania andrew"
-      
+      src={profilePic}
       className="relative inline-block h-[74px] w-[74px] rounded-full border-2 border-white object-cover object-center"
     />
   </div>

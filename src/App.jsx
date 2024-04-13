@@ -6,6 +6,7 @@ import Games from './pages/users/Games';
 import UserDashboard from './pages/users/User';
 import ParentDashboard from './pages/users/Parent'; 
 import Home from './pages/shared/Home';
+// import Footer from './components/Footer';
 const App = () => {
   
   return (
@@ -24,6 +25,7 @@ const App = () => {
              </Routes>
           </div>
        </Router>        
+       {/* <Footer /> */}
       </div> 
   );
 };

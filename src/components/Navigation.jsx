@@ -48,7 +48,7 @@ const Navigation = () => {
                <Link to="/" className="mr-5 font-medium hover:text-gray-900">Home </Link>
                <Link to="/Games" className="mr-5 font-medium hover:text-gray-900">Games </Link>
                 {/* <Link to="/ParentDashboard" className="mr-5 font-medium hover:text-gray-900">Parent Dashboard</Link> */}
-                {/* <Link to="/UserDashboard" className="font-medium hover:text-gray-900">Patient Dashboard</Link> */}
+                <Link to="/UserDashboard" className="font-medium hover:text-gray-90 0">Patient Dashboard</Link>
             </nav>
             <div className="items-center h-full pl-6 ml-6 border-l border-gray-200">
             {isLoggedIn ? (
