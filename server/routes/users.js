@@ -9,7 +9,7 @@ app.get('/api/users', async (req, res) => {
   
       // Verify the token
       jwt.verify(token, 'your-secret-key', async (err, decoded) => {
-        if (err) {
+        if (err) {                       
           return res.status(401).json({ error: 'Unauthorized: Invalid token' });
         }
   
@@ -35,9 +35,7 @@ app.get('/api/users', async (req, res) => {
     // Add any additional fields you want to include
   };
 
-  const formattedDoc = {
-docName: doc
-  }
+
   res.json(formattedUser);
   
       });

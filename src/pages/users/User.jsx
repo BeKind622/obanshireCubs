@@ -44,8 +44,7 @@ const UserDashboard = () => {
           <div className="flex-1 bg-white rounded-lg shadow-xl p-8 max-w-30">
             {user && (
               <ul key={user._id} >
-                <li><span className="font-bold w-24 text-blue-500">First name:</span> <span className="text-gray-700">{user.forename}</span></li>
-                <li><span className="font-bold w-24 text-blue-500">Last name:</span> <span className="text-gray-700">{user.surname}</span></li>
+                <li><span className="font-bold w-24 text-blue-500">Patient name:</span> <span className="text-gray-700">{user.name}</span></li>
                 <li><span className="font-bold w-24 text-blue-500">Birthday:</span> <span className="text-gray-700">{formattedDOB}</span></li>
                 <li><span className="font-bold w-24 text-blue-500">Email:</span> <span className="text-gray-700">{user.email}</span></li>
                 <li><span className="font-bold w-24 text-blue-500">Guardian name:</span> <span className="text-gray-700">{user.guardian_name}</span></li>

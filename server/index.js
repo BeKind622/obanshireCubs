@@ -171,7 +171,7 @@ app.get('/api/departments', async (req, res) => {
 app.post('/api/register', async (req, res) => {
     try {
       // Extract registration data from request body
-      const { email, password, forename, surname, dob, patient_number} = req.body;
+      const { email, password, name, dob, patient_number} = req.body;
   
       // Check if the user already exists
       const existingUser = await User.findOne({ email });
@@ -186,8 +186,7 @@ app.post('/api/register', async (req, res) => {
       const newUser = new User({
         email,
         password: hashedPassword,
-        forename,
-        surname,
+        name,
         dob,
         patient_number
         // Add any additional fields as needed

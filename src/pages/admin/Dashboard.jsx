@@ -48,14 +48,13 @@ const Dashboard = () => {
 
   return (
     <div>
-      <button onClick={handleLogout}>Logout</button>
+      {/* <button onClick={handleLogout}>Logout</button> */}
 
       <h2>Patient Dashboard</h2>
       {patients.map((patient) => (
         <ul key={patient._id}>
           <li>{patient._id}</li>
-          <li>{patient.forename}</li>
-          <li>{patient.surname}</li>
+          <li>{patient.name}</li>
           <li>{patient.email}</li>
           <li>{patient.department}</li>
           <li>{patient.guardian}</li>
