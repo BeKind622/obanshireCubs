@@ -1,13 +1,13 @@
-[
+ [
 {
-"doc_name": "Johnathan Wrong",
+"name": "Johnathan Wrong",
 "office": "111",
 "profilePic": "https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/4a287732-d033-48b6-c0a0-d3553c8bff00/width=450/216567.jpeg"
 
 },
 
 {
-"doc_name": "Anna Bates",
+"name": "Anna Bates",
 "office": "Spotify",
 "profilePic":"https://i.scdn.co/image/ab6761610000e5eb4e54f5e2c9b6a86bdc99d038"
 
@@ -15,7 +15,7 @@
 
 {
 
-    "doc_name": "Freddie Wong",
+    "name": "Freddie Wong",
     "office": "222",
     "profilePic":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3A45bpv3szfbMn6FlybEYTkmN1A40CGC6E8CUif-s1Q&s"
 }

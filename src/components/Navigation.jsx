@@ -47,8 +47,8 @@ const Navigation = () => {
             <nav className="flex items-center justify-center text-base md:ml-auto">
                <Link to="/" className="mr-5 font-medium hover:text-gray-900">Home </Link>
                <Link to="/Games" className="mr-5 font-medium hover:text-gray-900">Games </Link>
-                {/* <Link to="/ParentDashboard" className="mr-5 font-medium hover:text-gray-900">Parent Dashboard</Link> */}
-                <Link to="/UserDashboard" className="font-medium hover:text-gray-90 0">Patient Dashboard</Link>
+                {/* <Link to="/ParentDashboard" className="mr-5 font-medium hover:text-gray-900">Parent Dashboard</Link>
+                <Link to="/UserDashboard" className="font-medium hover:text-gray-90 0">Patient Dashboard</Link> */}
             </nav>
             <div className="items-center h-full pl-6 ml-6 border-l border-gray-200">
             {isLoggedIn ? (
@@ -56,8 +56,8 @@ const Navigation = () => {
               <div className="flex">
               {user&&(
                   
-                  <Link to ={isParent ? '/dashboardparent' : '/UserDashboard'} className="mr-5 font-medium hover:text-gray-900">
-           Profile
+                  <Link to ={isParent ? '/ParentDashboard' : '/UserDashboard'} className="mr-5 font-medium hover:text-gray-900">
+           Dashboard
                  </Link>
                   
                 )}

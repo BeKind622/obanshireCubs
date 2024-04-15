@@ -2,7 +2,6 @@ import React from "react";
 
 const Footer = () => {
     return (
-        <div class="flex items-end w-full min-h-screen bg-white">
 
     <footer class="w-full text-gray-700 bg-gray-100 body-font">
         <div
@@ -118,6 +117,7 @@ const Footer = () => {
         </div>
     </footer>
 
-</div>
     )
 }
+
+export default Footer;
