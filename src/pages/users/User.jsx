@@ -8,6 +8,7 @@ import DoctorInfo from '../../components/DoctorComponent';
 const UserDashboard = () => {
   
   const [user, setUser] = useState(null);
+
   const formattedDOB = user ? moment(user.dob).format('D/MM/YYYY') : '';
   
   useEffect(() => {
@@ -53,7 +54,7 @@ const UserDashboard = () => {
                 <li><span className="font-bold w-24 text-blue-500">Additional notes:</span> <span className="text-gray-700">{user.notes}</span></li>
               </ul>
             )}
-      <DoctorInfo />
+            {/* <DoctorInfo /> */}
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const User = require('./model/User');
 const Department= require('./model/Department');
-const Doctor= require('./model/Doctor');
+// const Doctor= require('./model/Doctor');
 
 
 
@@ -48,7 +48,7 @@ app.get('/api/users', async (req, res) => {
         .populate('department_id')
         .populate('doctor_id');
 
-
+      
       // The decoded.userId should match the structure used in jwt.sign during login
 
       if (!user) {
