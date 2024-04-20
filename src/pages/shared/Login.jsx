@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
+
+
 const Login = () => {
   const [email, setEmail] = useState(""); // Changed to email
   const [password, setPassword] = useState("");
@@ -8,7 +10,6 @@ const Login = () => {
   const navigate = useNavigate();
   
   const [errorMessage, setErrorMessage] = useState("");
-  
   
   const handleLogin = async (e) => {
       e.preventDefault();
@@ -51,7 +52,7 @@ const Login = () => {
   
   return (
     <>
-     <div className="bg-gray-100 flex justify-center items-center w-screen h-screen overflow-hidden relative">
+     <div className="bg-gray-100 flex justify-center items-center  overflow-hidden relative">
    
 <div className="w-1/2 h-screen hidden lg:block">
   <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Reception" className="object-cover w-full h-full blur-sm"/>
@@ -79,7 +80,7 @@ const Login = () => {
               name="password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" autocomplete="off"/>
+              className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"/>
     </div>
   
     <div className="mb-4 flex items-center">

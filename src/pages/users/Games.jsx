@@ -5,7 +5,7 @@ import gameData from '../../json/games.json';
 const Games = () => {
     return (
         <>
-        <div className="w-screen h-screen overflow-hidden relative flex justify-evenly flex-wrap">
+        <div className="overflow-hidden relative flex justify-evenly flex-wrap">
         {gameData.map((game, index) => (
             <Game 
             game_key ={index}

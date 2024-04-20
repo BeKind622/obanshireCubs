@@ -7,12 +7,13 @@ import UserDashboard from './pages/users/User';
 import ParentDashboard from './pages/users/Parent'; 
 import Home from './pages/shared/Home';
 import Footer from './components/Footer';
-// import Footer from './components/Footer';
+import Resources from './pages/shared/Resources';
+// import Xray from './components/resource_components/xray';
+
 const App = () => {
   
   return (
-    
-    <div className="">       
+    <div className="max-w-5xl mx-auto">    
       <Router>
         <Navigation />
         <div>
@@ -22,6 +23,7 @@ const App = () => {
             <Route path="/Login" element={<Login />} />
             <Route path="/UserDashboard" element={<UserDashboard />} />
             <Route path="/ParentDashboard" element={<ParentDashboard />} />
+            <Route path="/Resources" element={<Resources />} />
             <Route path="/" element={<Home />} />
              </Routes>
           </div>

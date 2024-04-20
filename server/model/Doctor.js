@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const doctorSchema = new mongoose.Schema({
-    name: String,
+   name: String,
    speciality: String,
    department_id: {type: mongoose.Schema.Types.ObjectId, ref: 'Department'},
    contact: String,

@@ -30,15 +30,7 @@ const UserInformation = () => {
     fetchUserData();
   }, []);
 
-  
   return user;
-
-  
-
- 
-
 };
-
-
 
 export default UserInformation;

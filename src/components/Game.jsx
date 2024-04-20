@@ -5,7 +5,7 @@ const Game = ({image, url, name, description}) => {
 return (
     <>
     
-    <div className="relative flex w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md gameTile max-h-96 p-2 my-2">
+    <div className=" flex flex-wrap w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md gameTile max-h-96 p-2 my-2">
   <div className="p-6">
     <h5 className="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
       {name}

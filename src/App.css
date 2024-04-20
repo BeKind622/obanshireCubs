@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;800&display=swap');
 body {
     font-family: 'Poppins', sans-serif;
+    max-width: 900px;
 }
 .hover\:w-full:hover {
     width: 100%;

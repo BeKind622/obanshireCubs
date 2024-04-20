@@ -47,6 +47,7 @@ const Navigation = () => {
             <nav className="flex items-center justify-center text-base md:ml-auto">
                <Link to="/" className="mr-5 font-medium hover:text-gray-900">Home </Link>
                <Link to="/Games" className="mr-5 font-medium hover:text-gray-900">Games </Link>
+               <Link to="/Resources" className="mr-5 font-medium hover:text-gray-900">Resources </Link>
                 {/* <Link to="/ParentDashboard" className="mr-5 font-medium hover:text-gray-900">Parent Dashboard</Link>
                 <Link to="/UserDashboard" className="font-medium hover:text-gray-90 0">Patient Dashboard</Link> */}
             </nav>
