@@ -8,7 +8,9 @@ import ParentDashboard from './pages/users/Parent';
 import Home from './pages/shared/Home';
 import Footer from './components/Footer';
 import Resources from './pages/shared/Resources';
-// import Xray from './components/resource_components/xray';
+import Clinics from './components/resource_components/clinics';
+import Xray from './components/resource_components/xray';
+import HospitalMap from './components/resource_components/hospitalMap';
 
 const App = () => {
   
@@ -24,6 +26,9 @@ const App = () => {
             <Route path="/UserDashboard" element={<UserDashboard />} />
             <Route path="/ParentDashboard" element={<ParentDashboard />} />
             <Route path="/Resources" element={<Resources />} />
+            <Route path="/Clinics" element={<Clinics />} />
+            <Route path="/Xray" element={<Xray />} />
+            <Route path="/HospitalMap" element={<HospitalMap />} />
             <Route path="/" element={<Home />} />
              </Routes>
           </div>

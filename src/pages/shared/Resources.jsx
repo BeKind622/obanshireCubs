@@ -24,7 +24,7 @@ const Resources = () => {
       <div className="container">
         <section className="hero-section">
           <div className="card-grid">
-            <Link className="card" to="/resource_components/xray" onClick={handleClick}>
+            <Link className="card max-w-xs" to="/Xray" onClick={handleClick}>
               <div
                 className="card__background"
                 style={{
@@ -37,7 +37,7 @@ const Resources = () => {
                 <h3 className="card__heading">X-ray scans</h3>
               </div>
             </Link>
-            <Link className="card" to="/resource_components/clinics">
+            <Link className="card max-w-xs" to="/Clinics">
               <div
                 className="card__background"
                 style={{
@@ -50,7 +50,7 @@ const Resources = () => {
                 <h3 className="card__heading">Clinics / Wards</h3>
               </div>
             </Link>
-            <Link className="card" to="/resource_components/hospitalMap">
+            <Link className="card max-w-xs" to="/HospitalMap">
               <div
                 className="card__background"
                 style={{
@@ -63,7 +63,7 @@ const Resources = () => {
                 <h3 className="card__heading">Hospital Map</h3>
               </div>
             </Link>
-            <Link className="card" to="/resource_components/childrensWing">
+            <Link className="card max-w-xs" to="/Games">
               <div
                 className="card__background"
                 style={{
@@ -73,7 +73,7 @@ const Resources = () => {
               ></div>
               <div className="card__content">
                 <p className="card__category">Category</p>
-                <h3 className="card__heading">Clinics / Wards</h3>
+                <h3 className="card__heading">Children's wing</h3>
               </div>
             </Link>
             {/* Add more links for other resources */}

@@ -4,8 +4,8 @@ const Xray = () => {
     return (
         <>
         
-        <p>xray card__content
-            </p></>
+      <img src="src\assets\infographic-xray-en.png" alt="" />
+      </>
     )
 }
 export default Xray

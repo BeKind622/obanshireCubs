@@ -4,6 +4,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     max-width: 900px;
+    background-color: aliceblue;
 }
 .hover\:w-full:hover {
     width: 100%;

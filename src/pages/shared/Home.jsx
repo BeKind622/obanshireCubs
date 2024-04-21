@@ -4,9 +4,9 @@ const Home = () => {
   return (
     <>
       
-<div className="w-screen h-screen overflow-hidden relative before:block before:absolute before:bg-black before:h-full before:w-full before:top-0 before:left-0 before:z-10 before:opacity-30">
-  <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="absolute top-0 left-0 min-h-full ob" alt=""/>
-  <div className="relative z-20 max-w-screen-lg mx-auto grid grid-cols-12 h-full items-center">
+<div className="overflow-hidden relative before:block before:absolute before:bg-black before:h-full before:w-full before:top-0 before:left-0 before:z-10 before:opacity-30 min-h-full h-screen">
+  <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="absolute top-0 left-0 min-h-full" alt=""/>
+  <div className="relative z-20 mx-auto grid grid-cols-12 h-full items-center">
     <div className="col-span-6">
       <span className="uppercase text-white text-xs font-bold mb-2 block">WE ARE EXPERTS</span>
       <h1 className="text-white font-extrabold text-5xl mb-8">We are the hospital that heals people</h1>
