@@ -56,8 +56,8 @@ const Navigation = () => {
               <>
               <div className="flex">
               {user&&(
+                <Link to ={isParent ? '/ParentDashboard' : '/UserDashboard'} className="mr-5 font-medium hover:text-gray-900">
                   
-                  <Link to ={isParent ? '/ParentDashboard' : '/UserDashboard'} className="mr-5 font-medium hover:text-gray-900">
            Dashboard
                  </Link>
                   
