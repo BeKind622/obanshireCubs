@@ -4,8 +4,7 @@ const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const User = require('./model/User');
-require('./model/Department');
+const Leader = require('./model/Leader');
 
 
 
@@ -29,7 +28,7 @@ mongoose.connection.on('connected', () => {
 });
 
 
-app.get('/api/users', async (req, res) => {
+app.get('/api/leaders', async (req, res) => {
   try {
     // Extract the token from the request headers
     const token = req.headers.authorization?.split(' ')[1];
@@ -43,43 +42,24 @@ app.get('/api/users', async (req, res) => {
       if (err) {
         return res.status(401).json({ error: 'Unauthorized: Invalid token' });
       }
-      const user = await User.findById(decoded.userId).populate('department_id');
+      
+      // Retrieve the leader from the database
+      const leader = await Leader.findById(decoded.leaderId);
 
-      // The decoded.userId should match the structure used in jwt.sign during login
-
-      if (!user) {
-        return res.status(404).json({ error: 'User not found' });
+      if (!leader) {
+        return res.status(404).json({ error: 'Leader not found' });
       }
 
-      // Return data only for the authenticated user
-    // Inside the /api/users route
-const formattedUser = {
-  _id: user._id,
-  email: user.email,
-  name: user.name,
-  guardian: user.guardian, // Add this line
-  guardian_name: user.guardian_name,
-  notes: user.notes, 
-  dob: user.dob,
-  patient_number: user.patient_number,
-  appointment_date: user.appointment_date,
-  appointment_notes: user.appointment_notes,
-  department_id: user.department_id ? {
-    name: user.department_id.name,
-    doctor: user.department_id.doctor,
-    location: user.department_id.location,
-    
-  
- 
-    // Add other department fields as needed
-  } : null,
-  
-  
-  // Add any additional fields you want to include
-};
+      // Return data only for the authenticated leader
+      const formattedLeader = {
+        _id: leader._id,
+        email: leader.email,
+        password: leader.password,
+        // Add other leader fields as needed
+        // Add any additional fields you want to include
+      };
 
-res.json(formattedUser);
-
+      res.json(formattedLeader);
     });
   } catch (error) {
     console.error(error);
@@ -91,13 +71,13 @@ res.json(formattedUser);
 app.post('/api/login', async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({ email });
+    const leader = await Leader.findOne({ email });
 
-    if (!user) {
+    if (!leader) {
       return res.status(401).json({ error: 'Invalid patient number or password' });
     }
 
-    const passwordMatch = await bcrypt.compare(password, user.password);
+    const passwordMatch = await bcrypt.compare(password, leader.password);
 
     if (!passwordMatch) {
       return res.status(401).json({ error: 'Invalid patient number or password' });
@@ -105,7 +85,7 @@ app.post('/api/login', async (req, res) => {
 
     // Include is_admin in the token payload
     const tokenPayload = {
-      userId: user._id,
+      leaderId: leader._id,
     };
 
     const token = jwt.sign(tokenPayload, 'your-secret-key', {
