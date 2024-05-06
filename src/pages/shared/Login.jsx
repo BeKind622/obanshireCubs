@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 
+
 const Login = () => {
   const [email, setEmail] = useState(""); // Changed to email
   const [password, setPassword] = useState("");
-  // const [parent, setParent] = useState(false);
+  const [parent, setParent] = useState(false);
   const navigate = useNavigate();
   
   const [errorMessage, setErrorMessage] = useState("");
@@ -19,20 +20,21 @@ const Login = () => {
           });
   
           console.log('Login successful');
-          // console.log('Token:', response.data.token);
+          console.log('Token:', response.data.token);
   
-          // localStorage.setItem("token", response.data.token);
+          localStorage.setItem("token", response.data.token);
           localStorage.setItem("email", email); // Store email instead of patient_number
   
   
   
-          // if (parent) {
-          //     localStorage.setItem("parent", 'true');
-          //     navigate("/");
-          // } else {
-          //     localStorage.removeItem("parent");
-          //     navigate("/");
-          // }
+          if (parent) {
+            console.log("working");
+              localStorage.setItem("parent", 'true');
+              navigate("/ParentDashboard");
+          } else {
+              localStorage.removeItem("parent");
+              navigate("/UserDashboard");
+          }
       } catch (error) {
           console.error('Login failed', error.response.data.error);
           setErrorMessage("Invalid email or password. Please try again."); // Set error message

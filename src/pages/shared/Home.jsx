@@ -4,92 +4,33 @@ const Home = () => {
   return (
     <>
       
-<div className="overflow-hidden relative before:block before:absolute before:bg-black before:h-full before:w-full before:top-0 before:left-0 before:z-10 before:opacity-30 min-h-full h-screen">
-  <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="absolute top-0 left-0 min-h-full" alt=""/>
-  <div className="relative z-20 mx-auto grid grid-cols-12 h-full items-center">
-    <div className="col-span-6">
-      <span className="uppercase text-white text-xs font-bold mb-2 block">WE ARE EXPERTS</span>
-      <h1 className="text-white font-extrabold text-5xl mb-8">We are the hospital that heals people</h1>
-      <p className="text-stone-100 text-base">
-        Any ailments, sicknesses or illnesses you have, we'll cure them right up.
+      <div className="hero py-40 bg-slate-200 relative before:block before:absolute before:bg-black before:h-full before:w-full before:top-0 before:z-10 before:opacity-70">
+  <img src="https://picsum.photos/1920/850" alt="" className="absolute top-0 left-0 h-full w-full object-cover" />
+  <div className="relative z-30 mx-auto max-w-screen-xl flex gap-20 justify-center">
+    <div className="w-2/3">
+      <span className="text-orange-600 uppercase font-medium mb-4 block">EXPLORE. DISCOVER. TRAVEL</span>
+      <h1 className="text-7xl text-white font-extrabold">Obanshire cub scouts</h1>
+      <div className="flex items-center gap-3 text-white my-6 text-4xl">
+      
+      </div>
+      <p className="text-slate-200">
+        Taciti quasi, sagittis excepteur hymenaeos, id temporibus hic proident ullam, eaque donec delectus tempor consectetur nunc, purus congue? Rem volutpat sodales! Mollit. Minus exercitationem wisi. Optio ullamco nullam purus volutpat optio ullamco nullam purus volutpat.
       </p>
-      <button className="mt-8 uppercase py-4 text-base font-light px-10 border border-white hover:bg-white hover:bg-opacity-10">Get started</button>
-    </div>
-  </div>
-</div>
-{/* <div className="bg-[#f7d0b6] py-20">
-  <div className="max-w-screen-lg mx-auto flex justify-between items-center">
-    <div className="max-w-xl">
-      <h2 className="font-black text-sky-950 text-3xl mb-4">As the leading experts in this field, we're in over 90 countries</h2>
-      <p className="text-base text-sky-950">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
-    <button className="text-white  uppercase py-3 text-base px-10 border border-sky-950 hover:bg-sky-950 hover:bg-opacity-10">Get started</button>
-  </div>
-</div> */}
-{/* <div className="py-12 relative overflow-hidden bg-white">
-  <div className="grid grid-cols-2 max-w-screen-lg mx-auto">
-    <div className="w-full flex flex-col items-end pr-16">
-      <h2 className="text-[#64618C] font-bold text-2xl max-w-xs text-right mb-12 mt-10">Whether you need Assistance</h2>
-      <div className="h-full mt-auto overflow-hidden relative">
-        <img src="https://picsum.photos/800/600" className="h-full w-full object-contain" alt=""/>
+      <div className="flex gap-8 mt-10">
+        <button className="text-white h-12 bg-orange-700 w-44">
+          Read More
+        </button>
+        <button className="text-white h-12 bg-blue-500 w-44">
+          See all offert
+        </button>
       </div>
     </div>
-
-    <div className="py-20 bg-slate-100 relative before:absolute before:h-full before:w-screen before:bg-sky-950 before:top-0 before:left-0">
-      <div className="relative z-20 pl-12">
-        <h2 className="text-[#f7d0b6] font-black text-5xl leading-snug mb-10">Finpoint is here <br/>to help you</h2>
-        <p className="text-white text-sm">
-          Purus in massa tempor nec. Magna etiam tempor orci eu lobortis elementum nibh tellus molestie. Faucibus ornare suspendisse sed nisi lacus sed viverra. Diam in arcu cursus euismod quis viverra nibh cras pulvinar.
-        </p>
-        <button className="mt-8 text-white uppercase py-3 text-sm px-10 border border-white hover:bg-white hover:bg-opacity-10">Talk with expert</button>
-      </div>
+    <div className="w-1/3">
+      
     </div>
   </div>
 </div>
 
-<div className="py-4 relative overflow-hidden bg-white">
-  <div className="grid grid-cols-2 max-w-screen-lg mx-auto">
-    
-
-    <div className="py-20 bg-slate-100 relative before:absolute before:h-full before:w-screen before:bg-[#f7d0b6] before:top-0 before:right-0">
-      <div className="relative z-20 pl-12">
-        <h2 className="text-sky-950 font-black text-5xl leading-snug mb-10">Finpoint is here <br/>to help you</h2>
-        <p className="text-sky-950 text-sm">
-          Purus in massa tempor nec. Magna etiam tempor orci eu lobortis elementum nibh tellus molestie. Faucibus ornare suspendisse sed nisi lacus sed viverra. Diam in arcu cursus euismod quis viverra nibh cras pulvinar.
-        </p>
-        <button className="mt-8 text-sky-950 uppercase py-3 text-sm px-10 border border-sky-950 hover:bg-white hover:bg-opacity-10">Talk with expert</button>
-      </div>
-    </div>
-    <div className="w-full flex flex-col pl-16">
-      <h2 className="text-[#64618C] font-bold text-2xl max-w-xs text-left mb-12 mt-10">Whether you need Assistance</h2>
-      <div className="h-full mt-auto overflow-hidden relative">
-        <img src="https://picsum.photos/800/600" className="h-full w-full object-contain" alt=""/>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div className="py-12 relative overflow-hidden bg-white">
-  <div className="grid grid-cols-2 max-w-screen-lg mx-auto">
-    <div className="w-full flex flex-col items-end pr-16">
-      <h2 className="text-[#64618C] font-bold text-2xl max-w-xs text-right mb-12 mt-10">Whether you need Assistance</h2>
-      <div className="h-full mt-auto overflow-hidden relative">
-        <img src="https://picsum.photos/800/600" className="h-full w-full object-contain" alt=""/>
-      </div>
-    </div>
-
-    <div className="py-20 bg-slate-100 relative before:absolute before:h-full before:w-screen before:bg-sky-950 before:top-0 before:left-0">
-      <div className="relative z-20 pl-12">
-        <h2 className="text-[#f7d0b6] font-black text-5xl leading-snug mb-10">Finpoint is here <br/>to help you</h2>
-        <p className="text-white text-sm">
-          Purus in massa tempor nec. Magna etiam tempor orci eu lobortis elementum nibh tellus molestie. Faucibus ornare suspendisse sed nisi lacus sed viverra. Diam in arcu cursus euismod quis viverra nibh cras pulvinar.
-        </p>
-        <button className="mt-8 text-white uppercase py-3 text-sm px-10 border border-white hover:bg-white hover:bg-opacity-10">Talk with expert</button>
-      </div>
-    </div>
-  </div>
-</div> */}
     </>
   );
 };
