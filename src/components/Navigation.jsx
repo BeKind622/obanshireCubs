@@ -15,7 +15,7 @@ const Navigation = () => {
   const handleLogout = () => {
 
     setIsLoggedIn(false);
-    // window.location.reload();
+    window.location.reload();
   };
   useEffect(() => {
     console.log("isLoggedIn:", isLoggedIn);
@@ -85,15 +85,26 @@ const Navigation = () => {
 
         <ul className="DESKTOP-MENU hidden space-x-8 lg:flex">
           <li>
-            <a href="/about">About</a>
+            <a href="/">Home</a>
           </li>
           <li>
-            <a href="/portfolio">Portfolio</a>
+            <a href="/About">About us</a>
+          </li>
+          <li>
+            <a href="/Pictures">Picture gallery</a>
+          </li>
+          <li>
+            <a href="/Badges">Badge gallery</a>
           </li>
           <li>
             <a href="/contact">Contact</a>
           </li>
+          <li>
+            <a href="/Login">Login</a>
+          </li>
+          
         </ul>
+        {/* <button onClick={handleLogout()}>Log out</button> */}
       </nav>
       <style>{`
       .hideMenuNav {

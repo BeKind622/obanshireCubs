@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const leadersSchema = new mongoose.Schema({
+const parentsSchema = new mongoose.Schema({
     email: String,
     password: String,
     userType: String,
@@ -10,8 +10,8 @@ const leadersSchema = new mongoose.Schema({
     
 });
 
-const Leader = mongoose.model('Leader', leadersSchema);
+const Parent = mongoose.model('Parent', parentsSchema);
 
-module.exports = Leader;
+module.exports = Parent;
 
 

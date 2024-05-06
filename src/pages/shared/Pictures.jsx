@@ -6,7 +6,7 @@ const Pictures = () => {
     <>
     
     
-    
+    Pictures
     
     </>
     )
