@@ -6,7 +6,6 @@ import {useNavigate} from 'react-router-dom';
 const Login = () => {
   const [email, setEmail] = useState(""); // Changed to email
   const [password, setPassword] = useState("");
-  const [parent, setParent] = useState(false);
   const navigate = useNavigate();
   
   const [errorMessage, setErrorMessage] = useState("");
@@ -24,17 +23,10 @@ const Login = () => {
   
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("email", email); // Store email instead of patient_number
+          localStorage.setItem("userType", userType); // Store email instead of patient_number
+          navigate('/');
   
-  
-  
-          if (parent) {
-            console.log("working");
-              localStorage.setItem("parent", 'true');
-              navigate("/ParentDashboard");
-          } else {
-              localStorage.removeItem("parent");
-              navigate("/UserDashboard");
-          }
+      
       } catch (error) {
           console.error('Login failed', error.response.data.error);
           setErrorMessage("Invalid email or password. Please try again."); // Set error message
@@ -42,12 +34,7 @@ const Login = () => {
       }
   };
   
-  useEffect(() => {
-      const storedParent = localStorage.getItem("parent");
-      if (storedParent) {
-          setParent(true);
-      }
-  }, []);
+
   
   
   
@@ -60,7 +47,7 @@ const Login = () => {
 </div>
 
 <div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
-  <h1 className="text-2xl font-semibold mb-4 text-gray-600">Patient Login</h1>
+  <h1 className="text-2xl font-semibold mb-4 text-gray-600">Login</h1>
   <form action="#" method="POST">
    
     <div className="mb-4">
@@ -84,16 +71,16 @@ const Login = () => {
               className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"/>
     </div>
   
-    <div className="mb-4 flex items-center">
+    {/* <div className="mb-4 flex items-center"> */}
       <input type="checkbox" id="remember" name="remember" className="text-blue-500"/>
       <label for="remember" className="text-gray-600 ml-2">Remember Me</label>
-    </div>
-    <div>
+    {/* </div> */}
+    {/* <div>
                 <label  className="inline-flex items-center mt-3" htmlFor="checkbox_id">
                   <input  className="form-checkbox h-5 w-5 text-gray-600 mr-2 text-blue-900" type="checkbox" id="checkbox_id" checked={parent} onChange={() => setParent(!parent)} />
                   <span className="text-sm font-medium text-gray-700">Parent/Guardian please select</span>  
                   </label>
-                </div>
+                </div> */}
   
     <div className="mb-6 text-blue-500">
       <a href="#" className="hover:underline">Forgot Password?</a>

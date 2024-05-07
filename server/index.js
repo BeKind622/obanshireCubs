@@ -4,9 +4,7 @@ const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const Leader = require('./model/Leader');
-const Parent = require('./model/Parent');
-
+const User = require('./model/User');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -25,7 +23,8 @@ mongoose.connection.on('connected', () => {
   console.log('Connected to MongoDB');
 });
 
-app.get('/api/leaders', async (req, res) => {
+// Route to get user data
+app.get('/api/users', async (req, res) => {
   try {
     // Extract the token from the request headers
     const token = req.headers.authorization?.split(' ')[1];
@@ -35,26 +34,27 @@ app.get('/api/leaders', async (req, res) => {
     }
 
     // Verify the token
-    jwt.verify(token, 'your-secret-key', async (err, decoded) => {
+    jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
       if (err) {
         return res.status(401).json({ error: 'Unauthorized: Invalid token' });
       }
-      const leader = await Leader.findById(decoded.userId); // Retrieve leader from DB
+      const user = await User.findById(decoded.userId);
 
-      if (!leader) {
-        return res.status(404).json({ error: 'Leader not found' });
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
       }
 
-      // Return data only for the authenticated leader
-      const formattedLeader = {
-        _id: leader._id,
-        email: leader.email,
-        name: leader.name,
-        password: leader.password,
-        // Add other department fields as needed
+      // Return data only for the authenticated user
+      const formattedUser = {
+        _id: user._id,
+        email: user.email,
+        name: user.name,
+        password: user.password,
+        userType: user.userType,
+        // Add other fields as needed
       };
 
-      res.json(formattedLeader);
+      res.json(formattedUser);
     });
   } catch (error) {
     console.error(error);
@@ -62,28 +62,29 @@ app.get('/api/leaders', async (req, res) => {
   }
 });
 
-// Leader login
+// user login
 app.post('/api/login', async (req, res) => {
   try {
     const { email, password } = req.body;
-    const leader = await Leader.findOne({ email });
+    const user = await User.findOne({ email });
 
-    if (!leader) {
+    if (!user) {
       return res.status(401).json({ error: 'Invalid email or password' });
     }
 
-    const passwordMatch = await bcrypt.compare(password, leader.password);
+    const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (!passwordMatch) {
       return res.status(401).json({ error: 'Invalid email or password' });
     }
 
-    // Include is_admin in the token payload
     const tokenPayload = {
-      userId: leader._id,
+      userId: user._id,
+      userType: user.userType, // Add userType to token payload
+
     };
 
-    const token = jwt.sign(tokenPayload, 'your-secret-key', {
+    const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, {
       expiresIn: '1h',
     });
 
@@ -93,72 +94,10 @@ app.post('/api/login', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
-// Route for parent login
-app.post('/api/parent/login', async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    // Find the parent by email
-    const parent = await Parent.findOne({ email });
-    // If parent not found, return error
-    if (!parent) {
-      return res.status(401).json({ error: 'Invalid email or password' });
-    }
-    // Compare passwords
-    const passwordMatch = await bcrypt.compare(password, parent.password);
-    // If passwords don't match, return error
-    if (!passwordMatch) {
-      return res.status(401).json({ error: 'Invalid email or password' });
-    }
-    // Include user type in token payload
-    const tokenPayload = {
-      userId: parent._id,
-      userType: 'parent', // Set the user type to 'parent'
-    };
-    // Generate JWT token
-    const token = jwt.sign(tokenPayload, 'your-secret-key', {
-      expiresIn: '1h',
-    });
-    // Send token as response
-    res.json({ token });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
 
-// Route to get parent data
-app.get('/api/parents', async (req, res) => {
-  try {
-    // Extract the token from the request headers
-    const token = req.headers.authorization?.split(' ')[1];
-    // If no token provided, return error
-    if (!token) {
-      return res.status(401).json({ error: 'Unauthorized: No token provided' });
-    }
-    // Verify the token
-    jwt.verify(token, 'your-secret-key', async (err, decoded) => {
-      if (err) {
-        return res.status(401).json({ error: 'Unauthorized: Invalid token' });
-      }
-      // Find parent by user ID
-      const parent = await Parent.findById(decoded.userId);
-      // If parent not found, return error
-      if (!parent) {
-        return res.status(404).json({ error: 'Parent not found' });
-      }
-      // Return parent data
-      res.json({
-        _id: parent._id,
-        email: parent.email,
-        userType: 'parent', // Include user type in response
-        // Add other fields as needed
-      });
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
+
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
