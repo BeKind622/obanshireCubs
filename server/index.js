@@ -24,37 +24,46 @@ mongoose.connection.on('connected', () => {
 });
 
 // Route to get user data
-app.get('/api/users', async (req, res) => {
+app.get("/api/users", async (req, res) => {
   try {
     // Extract the token from the request headers
-    const token = req.headers.authorization?.split(' ')[1];
+    const token = req.headers.authorization?.split(" ")[1];
 
     if (!token) {
-      return res.status(401).json({ error: 'Unauthorized: No token provided' });
+      return res.status(401).json({ error: "Unauthorized: No token provided" });
     }
 
     // Verify the token
-    jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
+    jwt.verify(token, "your-secret-key", async (err, decoded) => {
       if (err) {
-        return res.status(401).json({ error: 'Unauthorized: Invalid token' });
+        return res.status(401).json({ error: "Unauthorized: Invalid token" });
       }
-      const user = await User.findById(decoded.userId);
+
+      // The decoded.userId should match the structure used in jwt.sign during login
+      const user = await User.findById(decoded.userId)
 
       if (!user) {
-        return res.status(404).json({ error: 'User not found' });
+        return res.status(404).json({ error: "User not found" });
       }
 
       // Return data only for the authenticated user
-      const formattedUser = {
-        _id: user._id,
-        email: user.email,
-        name: user.name,
-        password: user.password,
-        userType: user.userType,
-        // Add other fields as needed
-      };
+    // Inside the /api/users route
+            const formattedUser = {
+                _id: user._id,
+                email: user.email,
+                forename: user.forename,
+                surname: user.surname,
+                userType: user.userType,
+     
+  
+  
+  // Add any additional fields you want to include
+};
 
-      res.json(formattedUser);
+
+
+res.json(formattedUser);
+
     });
   } catch (error) {
     console.error(error);
@@ -63,38 +72,120 @@ app.get('/api/users', async (req, res) => {
 });
 
 // user login
-app.post('/api/login', async (req, res) => {
+// app.post('/api/login', async (req, res) => {
+//   try {
+//     const { email, password } = req.body;
+//     const user = await User.findOne({ email });
+
+//     if (!user) {
+//       return res.status(401).json({ error: 'Invalid email or password' });
+//     }
+
+//     const passwordMatch = await bcrypt.compare(password, user.password);
+
+//     if (!passwordMatch) {
+//       return res.status(401).json({ error: 'Invalid email or password' });
+//     }
+
+//     const tokenPayload = {
+//       userId: user._id,
+//       // userType: user.userType, // Add userType to token payload
+
+//     };
+
+//     const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, {
+//       expiresIn: '1h',
+//     });
+
+//     res.json({ token });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: 'Internal server error' });
+//   }
+// });
+app.post("/api/login", async (req, res) => {
   try {
+    console.log("Request body:", req.body);
     const { email, password } = req.body;
-    const user = await User.findOne({ email });
+
+    console.log("Received email:", email);
+    console.log("Received password:", password);
+
+    console.log("Before user check");
+    const user = await User.findOne({ email: email });
+    console.log("Retrieved user:", user);
+
+    if (user) {
+      console.log("Found user:", user);
+    } else {
+      console.log("User not found");
+    }
 
     if (!user) {
-      return res.status(401).json({ error: 'Invalid email or password' });
+      return res
+        .status(401)
+        .json({ error: "Invalid email or password" });
     }
 
     const passwordMatch = await bcrypt.compare(password, user.password);
+    console.log("Password match:", passwordMatch);
 
     if (!passwordMatch) {
-      return res.status(401).json({ error: 'Invalid email or password' });
+      return res
+        .status(401)
+        .json({ error: "Invalid patient_number or password" });
     }
 
+    // Include is_admin in the token payload
     const tokenPayload = {
       userId: user._id,
-      userType: user.userType, // Add userType to token payload
-
     };
 
-    const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, {
-      expiresIn: '1h',
+    const token = jwt.sign(tokenPayload, "your-secret-key", {
+      expiresIn: "1h",
     });
 
+    // Include is_admin in the response
     res.json({ token });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// User Registration Endpoint
+app.post('/api/register', async (req, res) => {
+  try {
+    // Extract registration data from request body
+    const { email, password, forename} = req.body;
+
+    // Check if the user already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ error: 'User already exists' });
+    }
+
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create a new user document
+    const newUser = new User({
+      email,
+      password: hashedPassword,
+      forename,
+      // Add any additional fields as needed
+    });
+
+    // Save the new user document to the database
+    await newUser.save();
+
+    // Respond with success message
+    res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
-
 
 
 

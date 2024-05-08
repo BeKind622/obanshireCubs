@@ -19,25 +19,23 @@ const Login = () => {
           });
   
           console.log('Login successful');
-          console.log('Token:', response.data.token);
+          // console.log('Token:', response.data.token);
   
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("email", email); // Store email instead of patient_number
-          localStorage.setItem("userType", userType); // Store email instead of patient_number
           navigate('/');
-  
+          // console.log('User Type:', leader.user.userType);
+
       
       } catch (error) {
-          console.error('Login failed', error.response.data.error);
+          // console.error('Login failed', error.response.data.error);
           setErrorMessage("Invalid email or password. Please try again."); // Set error message
   
       }
   };
   
 
-  
-  
-  
+ 
   return (
     <>
      <div className="bg-gray-100 flex justify-center items-center  overflow-hidden relative">

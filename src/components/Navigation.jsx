@@ -15,8 +15,7 @@ const Navigation = () => {
   const handleLogout = () => {
 
     setIsLoggedIn(false);
-    window.location.reload();
-  };
+    window.location.href = '/';   };
   useEffect(() => {
     console.log("isLoggedIn:", isLoggedIn);
     // Check if the user is logged in by checking if the token exists in local storage
@@ -100,12 +99,15 @@ const Navigation = () => {
             <a href="/contact">Contact</a>
           </li>
           <li>
+            <a href="/CubDashboard">Cub Dashboard</a>
+          </li>
+          <li>
             <a href="/Login">Login</a>
           </li>
           
         </ul>
-        {/* <button onClick={handleLogout()}>Log out</button> */}
       </nav>
+        <button onClick={handleLogout}>Log out</button>
       <style>{`
       .hideMenuNav {
         display: none;
