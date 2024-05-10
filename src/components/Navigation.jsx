@@ -104,6 +104,9 @@ const Navigation = () => {
           <li>
             <a href="/Login">Login</a>
           </li>
+          <li>
+            <a href="/Register">Register</a>
+          </li>
           
         </ul>
       </nav>

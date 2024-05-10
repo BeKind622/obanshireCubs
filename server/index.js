@@ -154,10 +154,45 @@ app.post("/api/login", async (req, res) => {
 });
 
 // User Registration Endpoint
+// app.post('/api/register', async (req, res) => {
+//   try {
+//     // Extract registration data from request body
+//     const { email, password, forename} = req.body;
+
+//     // Check if the user already exists
+//     const existingUser = await User.findOne({ email });
+//     if (existingUser) {
+//       return res.status(400).json({ error: 'User already exists' });
+//     }
+
+//     // Hash the password
+//     const hashedPassword = await bcrypt.hash(password, 10);
+
+//     // Create a new user document
+//     const newUser = new User({
+//       email,
+//       password: hashedPassword,
+//       forename,
+//       surname,
+//       userType,
+//       // Add any additional fields as needed
+//     });
+
+//     // Save the new user document to the database
+//     await newUser.save();
+
+//     // Respond with success message
+//     res.status(201).json({ message: 'User registered successfully' });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: 'Internal server error' });
+//   }
+// });
+// User Registration Endpoint
 app.post('/api/register', async (req, res) => {
   try {
     // Extract registration data from request body
-    const { email, password, forename} = req.body;
+    const { email, password, forename, surname, userType } = req.body; // Include surname and userType
 
     // Check if the user already exists
     const existingUser = await User.findOne({ email });
@@ -173,6 +208,8 @@ app.post('/api/register', async (req, res) => {
       email,
       password: hashedPassword,
       forename,
+      surname,
+      userType,
       // Add any additional fields as needed
     });
 
