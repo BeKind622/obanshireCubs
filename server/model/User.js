@@ -5,6 +5,7 @@ const usersSchema = new mongoose.Schema({
   password: String,
   userType: String,
   forename: String,
+  surname: String,
   // Add other fields as needed
 });
 

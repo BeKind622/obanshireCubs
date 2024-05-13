@@ -40,9 +40,9 @@ const Login = () => {
     <>
      <div className="bg-gray-100 flex justify-center items-center  overflow-hidden relative">
    
-<div className="w-1/2 h-screen hidden lg:block">
+{/* <div className="w-1/2 h-screen hidden lg:block">
   <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Reception" className="object-cover w-full h-full blur-sm"/>
-</div>
+</div> */}
 
 <div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
   <h1 className="text-2xl font-semibold mb-4 text-gray-600">Login</h1>
@@ -80,9 +80,7 @@ const Login = () => {
                   </label>
                 </div> */}
   
-    <div className="mb-6 text-blue-500">
-      <a href="#" className="hover:underline">Forgot Password?</a>
-    </div>
+    
   
     <button type="submit" onClick={handleLogin} className="w-full bg-blue-900 text-white p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-black focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300">Login</button>
   </form>

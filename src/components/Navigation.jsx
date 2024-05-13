@@ -38,8 +38,8 @@ const Navigation = () => {
         <header className="w-full mt-5 text-gray-700 bg-white shadow-sm body-font">
         <div className="container flex flex-col items-end p-6 mx-auto md:flex-row">
             
-        <nav className="z-0 relative" x-data={{open:false, menu:false}}>
-        <nav>
+        <nav className="z-0 relative flex" x-data={{open:false, menu:false}}>
+        
         <section className="MOBILE-MENU flex lg:hidden justify-center">
           <div
             className="HAMBURGER-ICON space-y-2"
@@ -75,9 +75,7 @@ const Navigation = () => {
               <li className="border-b border-gray-400 my-8 uppercase">
                 <a href="/portfolio">Portfolio</a>
               </li>
-              <li className="border-b border-gray-400 my-8 uppercase">
-                <a href="/contact">Contact</a>
-              </li>
+           
             </ul>
           </div>
         </section>
@@ -109,8 +107,10 @@ const Navigation = () => {
           </li>
           
         </ul>
-      </nav>
-        <button onClick={handleLogout}>Log out</button>
+        
+        <button className="mx-5"onClick={handleLogout}>Log out</button>
+      
+        
       <style>{`
       .hideMenuNav {
         display: none;

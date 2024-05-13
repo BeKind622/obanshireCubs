@@ -11,10 +11,11 @@ import Home from './pages/shared/Home';
 import Footer from './components/Footer';
 import CubDashboard from './pages/users/Cub';
 import HelperDashboard from './pages/users/helper/HelpderDashboard';
+import ImageUpload from './pages/users/helper/ImageUpload';
 const App = () => {
   
   return (
-    <div className="max-w-5xl mx-auto">    
+    <div className="mx-auto">    
       <Router>
         <Navigation />
         <div>
@@ -28,6 +29,7 @@ const App = () => {
             <Route path="/Pictures" element={<Pictures />} />
             <Route path="/Badges" element={<Badges />} />
             <Route path="/About" element={<About />} />
+            <Route path="/ImageUpload" element={<ImageUpload />} />
        
             <Route path="/" element={<Home />} />
              </Routes>

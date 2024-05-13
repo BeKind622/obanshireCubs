@@ -55,10 +55,16 @@ app.get("/api/users", async (req, res) => {
                 surname: user.surname,
                 userType: user.userType,
      
-  
-  
-  // Add any additional fields you want to include
-};
+                
+                // Add any additional fields you want to include
+              };
+    //           const galleryEntry = {
+    //             filename: picture.name,
+    // description: picture.description,
+    // uploadDate: picture.uploadDate,
+    // contentType: picture.contentType,
+    // imageData: picture.imageData,
+    //           }
 
 
 
