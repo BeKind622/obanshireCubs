@@ -9,8 +9,8 @@ import Pictures from './pages/shared/Pictures';
 import ParentDashboard from './pages/users/Parent'; 
 import Home from './pages/shared/Home';
 import Footer from './components/Footer';
-import CubDashboard from './pages/users/Cub';
-import HelperDashboard from './pages/users/helper/HelpderDashboard';
+import Dashboard from './pages/users/Dashboard';
+import HelperDashboard from './pages/users/helper/HelperDashboard';
 import ImageUpload from './pages/users/helper/ImageUpload';
 const App = () => {
   
@@ -23,9 +23,9 @@ const App = () => {
         <Routes className="flex">
             <Route path="/Login" element={<Login />} />
             <Route path="/Register" element={<Register />} />
-            <Route path="/CubDashboard" element={<CubDashboard />} />
-            <Route path="/ParentDashboard" element={<ParentDashboard />} />
-            <Route path="/HelperDashboard" element={<HelperDashboard />} />
+            <Route path="/Dashboard" element={<Dashboard />} />
+            {/* <Route path="/ParentDashboard" element={<ParentDashboard />} /> */}
+            {/* <Route path="/HelperDashboard" element={<HelperDashboard />} /> */}
             <Route path="/Pictures" element={<Pictures />} />
             <Route path="/Badges" element={<Badges />} />
             <Route path="/About" element={<About />} />

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {Link, useLocation} from 'react-router-dom';
-import UserInformation from "./UserInformation";
 
 
 const Navigation = () => {
@@ -8,15 +7,16 @@ const Navigation = () => {
     const [isParent, setIsParent] = useState(false);
     
 
-    const user = UserInformation();
   const location = useLocation();
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const handleLogout = () => {
 
     setIsLoggedIn(false);
-    window.location.href = '/';   };
-  useEffect(() => {
+    const history = useHistory();
+    history.push('/');
+    
+    useEffect(() => {
     console.log("isLoggedIn:", isLoggedIn);
     // Check if the user is logged in by checking if the token exists in local storage
     const token = localStorage.getItem('token');
@@ -97,7 +97,7 @@ const Navigation = () => {
             <a href="/contact">Contact</a>
           </li>
           <li>
-            <a href="/CubDashboard">Cub Dashboard</a>
+            <a href="/Dashboard">Dashboard</a>
           </li>
           <li>
             <a href="/Login">Login</a>
@@ -178,5 +178,5 @@ const Navigation = () => {
     )
 }
 
-
+}
 export default Navigation

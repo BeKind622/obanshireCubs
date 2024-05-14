@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { redirect } from 'react-router-dom';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +21,8 @@ const Register = () => {
       const response = await axios.post('http://localhost:5000/api/register', formData);
       console.log(response.data);
       // Optionally, you can redirect the user or show a success message
+      redirect('/');
+      alert('Account created successfully! Please log in.')
     } catch (error) {
       console.error('Registration failed:', error);
       // Handle error, show error message, etc.
