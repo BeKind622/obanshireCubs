@@ -23,17 +23,17 @@ const Dashboard = () => {
 
   return (
     <>
-      {user && (
+      {user ? (
         <div>
           <div className="max-w-xl py-5 mx-8">
-            <h1 className="font-black text-blue-900 text-4xl mb-4">Welcome, {user.forename} </h1>
+            <h1 className="font-black text-blue-900 text-4xl mb-4">Welcome, {user.forename}</h1>
           </div>
           {renderDashboard()}
         </div>
+      ) : (
+        <div className="h-60 text-6xl text-center my-20"> Oops! Looks like you are not logged in!</div> // Empty div for not logged-in users
       )}
-      {/* Render appropriate dashboard */}
     </>
   );
 };
-
 export default Dashboard;

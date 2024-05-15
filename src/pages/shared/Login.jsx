@@ -3,36 +3,33 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 
 
-const Login = () => {
-  const [email, setEmail] = useState(""); // Changed to email
+const Login = ({ setIsLoggedIn }) => {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  
   const [errorMessage, setErrorMessage] = useState("");
-  
-  const handleLogin = async (e) => {
-      e.preventDefault();
-      try {   
-          const response = await axios.post("http://localhost:5000/api/login", {
-              email, // Use email instead of patient_number
-              password
-          });
-  
-          console.log('Login successful');
-          // console.log('Token:', response.data.token);
-  
-          localStorage.setItem("token", response.data.token);
-          localStorage.setItem("email", email); // Store email instead of patient_number
-          navigate('/');
-          // console.log('User Type:', leader.user.userType);
 
-      
-      } catch (error) {
-          // console.error('Login failed', error.response.data.error);
-          setErrorMessage("Invalid email or password. Please try again."); // Set error message
-  
-      }
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:5000/api/login", {
+        email,
+        password
+      });
+
+      console.log('Login successful');
+      navigate('/Dashboard');
+
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("email", email);
+      console.log("token")
+      setIsLoggedIn(true);
+      window.location.reload()
+    } catch (error) {
+      setErrorMessage("Invalid email or password. Please try again.");
+    }
   };
+
   
 
  

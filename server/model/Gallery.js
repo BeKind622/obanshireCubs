@@ -1,16 +1,14 @@
 const mongoose = require('mongoose');
 
-
 const gallerySchema = new mongoose.Schema({
-   filename: String,
+    filename: String,
     description: String,
     uploadDate: Date,
     contentType: String,
-    imageData: Binary,
+    imageData: String,  // Ensure this is String since you're saving base64 encoded data
     // Add other fields as needed
-  });
-  
-  const gallery = mongoose.model('gallery', usersSchema);
-  
-  module.exports = gallery;
-  
+});
+
+const Gallery = mongoose.model('Gallery', gallerySchema);  // Corrected model name to match convention
+
+module.exports = Gallery;

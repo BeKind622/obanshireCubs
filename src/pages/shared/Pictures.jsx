@@ -13,7 +13,7 @@ const Pictures = () => {
         formData.append('image', selectedFile);
 
         try {
-            await axios.post('/api/upload', formData, {
+            await axios.post('/api/upload', formData, {  // Updated endpoint to match backend
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

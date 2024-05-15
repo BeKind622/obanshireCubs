@@ -7,7 +7,7 @@ const About = () => {
     <>
     <div className="hero py-40 bg-slate-200 relative before:block before:absolute before:bg-black before:h-full before:w-full before:top-0 before:z-10 before:opacity-70">
   <img src="https://picsum.photos/1920/850" alt="" className="absolute top-0 left-0 h-full w-full object-cover" />
-  <div className="relative z-30 mx-auto max-w-screen-xl flex gap-20 justify-center">
+  <div className="relative z-20 mx-auto max-w-screen-xl flex gap-20 justify-center">
     <div className="w-2/3">
       <span className="text-orange-600 uppercase font-medium mb-4 block">Obanshire cub scouts</span>
       <h1 className="text-7xl text-white font-extrabold">About us</h1>

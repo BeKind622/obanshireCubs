@@ -5,8 +5,7 @@ const upload = multer({ dest: 'uploads/' });
 const fs = require('fs');
 const Gallery = require('../model/Gallery');
 
-
-router.post('/upload', upload.single('image'), async (req, res) => {
+router.post('/upload', upload.single('image'), async (req, res) => {  // Ensure 'image' matches the frontend field name
     try {
         const { originalname, mimetype, filename } = req.file;
         const imagePath = req.file.path;
