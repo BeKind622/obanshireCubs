@@ -9,7 +9,6 @@ import Pictures from './pages/shared/Pictures';
 import Home from './pages/shared/Home';
 import Footer from './components/Footer';
 import Dashboard from './pages/users/Dashboard';
-import ImageUpload from './pages/users/helper/ImageUpload';
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -28,7 +27,6 @@ const App = () => {
             <Route path="/Pictures" element={<Pictures />} />
             <Route path="/Badges" element={<Badges />} />
             <Route path="/About" element={<About />} />
-            <Route path="/ImageUpload" element={<ImageUpload />} />
        
             <Route path="/" element={<Home />} />
              </Routes>

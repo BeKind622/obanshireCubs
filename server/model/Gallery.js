@@ -3,12 +3,11 @@ const mongoose = require('mongoose');
 const gallerySchema = new mongoose.Schema({
     filename: String,
     description: String,
-    uploadDate: Date,
+    uploadDate: { type: Date, default: Date.now },
     contentType: String,
-    imageData: String,  // Ensure this is String since you're saving base64 encoded data
-    // Add other fields as needed
+    imageData: String,
 });
 
-const Gallery = mongoose.model('Gallery', gallerySchema);  // Corrected model name to match convention
+const Gallery = mongoose.model('Gallery', gallerySchema);
 
 module.exports = Gallery;

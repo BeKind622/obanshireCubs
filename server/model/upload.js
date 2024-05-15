@@ -1,29 +1,47 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
-const fs = require('fs');
-const Gallery = require('../model/Gallery');
+const Gallery = require('../models/Gallery');
+const path = require('path');
 
-router.post('/upload', upload.single('image'), async (req, res) => {  // Ensure 'image' matches the frontend field name
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/');
+    },
+    filename: (req, file, cb) => {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        const extension = path.extname(file.originalname);
+        cb(null, `${file.fieldname}-${uniqueSuffix}${extension}`);
+    }
+});
+
+const upload = multer({ storage });
+
+router.post('/galleries', upload.single('imageData'), async (req, res) => {
     try {
-        const { originalname, mimetype, filename } = req.file;
-        const imagePath = req.file.path;
-        const imageBuffer = fs.readFileSync(imagePath);
-        const imageData = imageBuffer.toString('base64');
+        const { filename, mimetype } = req.file;
 
-        const newImage = new Gallery({
-            filename: originalname,
+        const newGallery = new Gallery({
+            filename: filename,
             description: req.body.description || '',
-            uploadDate: Date.now(),
             contentType: mimetype,
-            imageData: imageData,
+            imageData: filename
         });
 
-        await newImage.save();
-        res.status(201).send('Image uploaded successfully!');
+        await newGallery.save();
+        res.status(201).json(newGallery);
     } catch (error) {
         console.error('Error uploading image:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.get('/galleries', async (req, res) => {
+    try {
+        const galleries = await Gallery.find();
+        res.json(galleries);
+    } catch (error) {
+        console.error('Error fetching galleries:', error);
         res.status(500).send('Internal Server Error');
     }
 });

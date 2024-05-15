@@ -235,3 +235,70 @@ app.post('/api/register', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+
+// image upload code
+
+const multer = require('multer');
+
+const Gallery = require('./model/Gallery');
+
+
+
+app.use("/uploads", express.static("uploads"));
+        
+//fetch posts
+app.get('/api/galleries', async (req, res) => {
+  try {
+    const galleries = await Gallery.find();
+    res.json(galleries);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Serve the uploads folder as static files
+app.use("/uploads", express.static("uploads"));
+
+//format for the post's pictures
+const path = require("path"); // Needed to handle file extensions
+// Custom storage configuration for Multer
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+      cb(null, 'uploads/');
+  },
+  filename: function (req, file, cb) {
+      const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+      const extension = file.originalname.split('.').pop(); // Extract the file extension
+      const baseName = file.originalname.replace(`.${extension}`, ''); // Fix template literal syntax
+
+      // Combine base filename with unique suffix and original extension
+      const newFilename = `${baseName}-${uniqueSuffix}.${extension}`; // Use correct template literal syntax
+      cb(null, newFilename);
+  }
+});
+
+const upload = multer({ storage }); // Use the custom storage
+
+// Add a picture to the gallery
+app.post("/api/galleries", upload.single("imageData"), async (req, res) => {
+  try {
+    const { filename, description, uploadDate, contentType } = req.body;
+
+    const galleryEntry = new Gallery({
+      filename,
+      description,
+      uploadDate,
+      contentType,
+      imageData: req.file.filename,
+    });
+
+    await galleryEntry.save();
+    res.status(201).json(galleryEntry);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
