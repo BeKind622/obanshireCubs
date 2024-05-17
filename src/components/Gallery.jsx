@@ -36,6 +36,7 @@ const Gallery = () => {
                     return (
                         <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-lg" key={gallery._id}>
                             <div className="h-96 w-72 rounded-lg">
+                                <h2>{gallery.imageName}</h2>
                                 <img className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125 rounded-lg" src={imageUrl} alt="activityPicture" />
                             </div>
                         </div>
