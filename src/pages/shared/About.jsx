@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import FAQ from "../../components/FAQ";
 
 const About = () => {
 
@@ -28,12 +29,11 @@ Home        </button></Link>
 
       
     </div>
-    <div className="w-1/3">
-      
-    </div>
+    
   </div>
   
 </div>    
+{<FAQ/>}
     </>
     )
 }

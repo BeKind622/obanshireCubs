@@ -6,9 +6,10 @@ function CardmatchGame() {
       <h2>Card Match Game</h2>
       <iframe 
         src="https://gifcentration-2.vercel.app/" 
-        max-width="1200" 
-        max-height="800" 
-        style={{ border: 'none' }}
+       
+        width="100%" 
+         height="100%" 
+        style={{ border: 'none', display:"block" }}
         title="OpenAI Website"
       ></iframe>
     </div>

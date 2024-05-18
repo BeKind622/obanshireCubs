@@ -78,6 +78,9 @@ const Navigation = ({ setIsLoggedIn }) => {
               <li className="border-b border-gray-400 my-8 uppercase">
                 <Link to="/About" onClick={closeNav}>About</Link>
               </li>
+              <li className="border-b border-gray-400 my-8 uppercase">
+                <Link to="/Games" onClick={closeNav}>Games</Link>
+              </li>
               {isLoggedIn && (
                 <li className="border-b border-gray-400 my-8 uppercase">
                   <button onClick={handleLogout}>Log out</button>
@@ -108,6 +111,9 @@ const Navigation = ({ setIsLoggedIn }) => {
           </li>
           <li>
             <Link to="/About">About</Link>
+          </li>
+          <li>
+            <Link to="/Games">Games</Link>
           </li>
           {isLoggedIn && (
             <li className="border-b border-gray-400 uppercase">

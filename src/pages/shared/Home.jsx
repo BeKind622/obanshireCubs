@@ -1,5 +1,6 @@
 import React from 'react';
 import UserInformation from '../../components/UserInformation';
+import FAQ from '../../components/FAQ';
 
 const Home = () => {
   const user = UserInformation();
@@ -20,12 +21,12 @@ const Home = () => {
         Taciti quasi, sagittis excepteur hymenaeos, id temporibus hic proident ullam, eaque donec delectus tempor consectetur nunc, purus congue? Rem volutpat sodales! Mollit. Minus exercitationem wisi. Optio ullamco nullam purus volutpat optio ullamco nullam purus volutpat.
       </p>
       <div className="flex gap-8 mt-10">
-        <button className="text-white h-12 bg-orange-700 w-44">
+        {/* <button className="text-white h-12 bg-orange-700 w-44">
           Read More
         </button>
         <button className="text-white h-12 bg-blue-500 w-44">
           See all offert
-        </button>
+        </button> */}
       </div>
     </div>
     <div className="w-1/3">
@@ -33,7 +34,7 @@ const Home = () => {
     </div>
   </div>
 </div>
-
+{<FAQ/>}
     </>
   );
 };
