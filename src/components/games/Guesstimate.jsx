@@ -2,13 +2,13 @@ import React from 'react';
 
 function GuessingGame() {
   return (
-    <div>
+    <div className="h-full">
       <h2>Card Match Game</h2>
       <iframe 
         src="https://guesstimategame.io/" 
-        width="auto" 
-        height="auto" 
-        style={{ border: 'none' }}
+        width="100%" 
+         height="100%" 
+        style={{ border: 'none', display: "block" }}
         title="OpenAI Website"
       ></iframe>
     </div>

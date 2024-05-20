@@ -1,0 +1,117 @@
+[
+    {
+      "id": 1,
+      "name": "First Aid",
+      "description": "Awarded for completing a first aid course.",
+      "image": "first_aid.png"
+    },
+    {
+      "id": 2,
+      "name": "Camping",
+      "description": "Awarded for successfully setting up a campsite.",
+      "image": "camping.png"
+    },
+    {
+      "id": 3,
+      "name": "Hiking",
+      "description": "Awarded for completing a 10-mile hike.",
+      "image": "hiking.png"
+    },
+    {
+      "id": 4,
+      "name": "Swimming",
+      "description": "Awarded for demonstrating strong swimming skills.",
+      "image": "swimming.png"
+    },
+    {
+      "id": 5,
+      "name": "Cooking",
+      "description": "Awarded for preparing a complete meal outdoors.",
+      "image": "cooking.png"
+    },
+    {
+      "id": 6,
+      "name": "Orienteering",
+      "description": "Awarded for navigating a course using a map and compass.",
+      "image": "orienteering.png"
+    },
+    {
+      "id": 7,
+      "name": "Knot Tying",
+      "description": "Awarded for mastering several types of knots.",
+      "image": "knot_tying.png"
+    },
+    {
+      "id": 8,
+      "name": "Wildlife",
+      "description": "Awarded for identifying and learning about local wildlife.",
+      "image": "wildlife.png"
+    },
+    {
+      "id": 9,
+      "name": "Fire Building",
+      "description": "Awarded for building and safely maintaining a fire.",
+      "image": "fire_building.png"
+    },
+    {
+      "id": 10,
+      "name": "Astronomy",
+      "description": "Awarded for identifying stars and constellations.",
+      "image": "astronomy.png"
+    },
+    {
+      "id": 11,
+      "name": "Cycling",
+      "description": "Awarded for completing a long-distance bike ride.",
+      "image": "cycling.png"
+    },
+    {
+      "id": 12,
+      "name": "Fishing",
+      "description": "Awarded for catching and releasing fish.",
+      "image": "fishing.png"
+    },
+    {
+      "id": 13,
+      "name": "Archery",
+      "description": "Awarded for demonstrating archery skills.",
+      "image": "archery.png"
+    },
+    {
+      "id": 14,
+      "name": "Rock Climbing",
+      "description": "Awarded for successfully climbing a rock face.",
+      "image": "rock_climbing.png"
+    },
+    {
+      "id": 15,
+      "name": "Geocaching",
+      "description": "Awarded for finding geocaches using a GPS.",
+      "image": "geocaching.png"
+    },
+    {
+      "id": 16,
+      "name": "Photography",
+      "description": "Awarded for taking high-quality photographs.",
+      "image": "photography.png"
+    },
+    {
+      "id": 17,
+      "name": "Woodworking",
+      "description": "Awarded for creating a useful item from wood.",
+      "image": "woodworking.png"
+    },
+    {
+      "id": 18,
+      "name": "Environmental Science",
+      "description": "Awarded for conducting an environmental science project.",
+      "image": "environmental_science.png"
+    },
+    {
+      "id": 19,
+      "name": "Public Speaking",
+      "description": "Awarded for delivering a compelling speech.",
+      "image": "(../assets/activity-sc-lifesaver.svg)"
+    }
+  ]
+  

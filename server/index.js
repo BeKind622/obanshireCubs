@@ -53,19 +53,8 @@ app.get("/api/users", async (req, res) => {
                 email: user.email,
                 forename: user.forename,
                 surname: user.surname,
-                userType: user.userType,
-     
-                
-                // Add any additional fields you want to include
-              };
-    //           const galleryEntry = {
-    //             filename: picture.name,
-    // description: picture.description,
-    // uploadDate: picture.uploadDate,
-    // contentType: picture.contentType,
-    // imageData: picture.imageData,
-    //           }
-
+                userType: user.userType,  };
+ 
 
 
 res.json(formattedUser);
@@ -77,38 +66,8 @@ res.json(formattedUser);
   }
 });
 
-// user login
-// app.post('/api/login', async (req, res) => {
-//   try {
-//     const { email, password } = req.body;
-//     const user = await User.findOne({ email });
 
-//     if (!user) {
-//       return res.status(401).json({ error: 'Invalid email or password' });
-//     }
 
-//     const passwordMatch = await bcrypt.compare(password, user.password);
-
-//     if (!passwordMatch) {
-//       return res.status(401).json({ error: 'Invalid email or password' });
-//     }
-
-//     const tokenPayload = {
-//       userId: user._id,
-//       // userType: user.userType, // Add userType to token payload
-
-//     };
-
-//     const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, {
-//       expiresIn: '1h',
-//     });
-
-//     res.json({ token });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: 'Internal server error' });
-//   }
-// });
 app.post("/api/login", async (req, res) => {
   try {
     console.log("Request body:", req.body);
@@ -302,3 +261,4 @@ app.post("/api/galleries", upload.single("imageData"), async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
