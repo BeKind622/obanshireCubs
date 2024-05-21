@@ -32,6 +32,7 @@ Home        </button></Link>
     
   </div>
   
+      <div className="b"></div>
 </div>    
 {<FAQ/>}
     </>

@@ -3,108 +3,108 @@
       "id": 1,
       "name": "Athletics",
       "description": "Awarded for demonstrating athletic skills.",
-      "image": "src/assets/activity-badges-sc-athletics-rgb.png"
+      "image": "src/assets/badges/activity-badges-sc-athletics-rgb.png"
   },
   {
       "id": 2,
       "name": "Fundraising",
       "description": "Awarded for successfully organizing a fundraising event.",
-      "image": "src/assets/activity-badges-sc-fundraising-rgb-350x350px.png"
+      "image": "src/assets/badges/activity-badges-sc-fundraising-rgb-350x350px.png"
   },
   {
       "id": 3,
       "name": "Activity centre service",
       "description": "Awarded for providing service at an activity centre.",
-      "image": "src/assets/activity-sc-activitycenterservice.svg"
+      "image": "src/assets/badges/activity-sc-activitycenterservice.svg"
   },
   {
       "id": 4,
       "name": "Air researcher",
       "description": "Awarded for conducting air-related research.",
-      "image": "src/assets/activity-sc-air-researcher.png"
+      "image": "src/assets/badges/activity-sc-air-researcher.png"
   },
   {
       "id": 5,
       "name": "Air spotter",
       "description": "Awarded for identifying different types of aircraft.",
-      "image": "src/assets/activity-sc-air-spotter.png"
+      "image": "src/assets/badges/activity-sc-air-spotter.png"
   },
   {
       "id": 6,
       "name": "Artist",
       "description": "Awarded for creating exceptional art.",
-      "image": "src/assets/activity-sc-artist.svg"
+      "image": "src/assets/badges/activity-sc-artist.svg"
   },
   {
       "id": 7,
       "name": "Chef",
       "description": "Awarded for demonstrating cooking skills.",
-      "image": "src/assets/activity-sc-chef.svg"
+      "image": "src/assets/badges/activity-sc-chef.svg"
   },
   {
       "id": 8,
       "name": "Climber",
       "description": "Awarded for successfully climbing a rock face.",
-      "image": "src/assets/activity-sc-climber.svg"
+      "image": "src/assets/badges/activity-sc-climber.svg"
   },
   {
       "id": 9,
       "name": "Craft",
       "description": "Awarded for demonstrating exceptional craft skills.",
-      "image": "src/assets/activity-sc-craft.svg"
+      "image": "src/assets/badges/activity-sc-craft.svg"
   },
   {
       "id": 10,
       "name": "Equestrian",
       "description": "Awarded for demonstrating horse riding skills.",
-      "image": "src/assets/activity-sc-equestrian.svg"
+      "image": "src/assets/badges/activity-sc-equestrian.svg"
   },
   {
       "id": 11,
       "name": "Farming",
       "description": "Awarded for demonstrating farming skills.",
-      "image": "src/assets/activity-sc-farming.svg"
+      "image": "src/assets/badges/activity-sc-farming.svg"
   },
   {
       "id": 12,
       "name": "Fire safety",
       "description": "Awarded for demonstrating fire safety skills.",
-      "image": "src/assets/activity-sc-fire-safety.svg"
+      "image": "src/assets/badges/activity-sc-fire-safety.svg"
   },
   {
       "id": 13,
       "name": "Geocaching",
       "description": "Awarded for successfully finding geocaches.",
-      "image": "src/assets/activity-sc-geocaching.svg"
+      "image": "src/assets/badges/activity-sc-geocaching.svg"
   },
   {
       "id": 14,
       "name": "Hill walking",
       "description": "Awarded for successfully completing hill walks.",
-      "image": "src/assets/activity-sc-hill-walker.svg"
+      "image": "src/assets/badges/activity-sc-hill-walker.svg"
   },
   {
       "id": 15,
       "name": "Librarian",
       "description": "Awarded for demonstrating skills in managing a library.",
-      "image": "src/assets/activity-sc-librarian.svg"
+      "image": "src/assets/badges/activity-sc-librarian.svg"
   },
   {
       "id": 16,
       "name": "Lifesaver",
       "description": "Awarded for demonstrating lifesaving skills.",
-      "image": "src/assets/activity-sc-lifesaver.svg"
+      "image": "src/assets/badges/activity-sc-lifesaver.svg"
   },
   {
       "id": 17,
       "name": "Angler",
       "description": "Awarded for demonstrating fishing skills.",
-      "image": "src/assets/angler-badge-01-1.png"
+      "image": "src/assets/badges/angler-badge-01-1.png"
   },
   {
       "id": 18,
       "name": "Cyclist",
       "description": "Awarded for demonstrating cycling skills.",
-      "image": "src/assets/scouts-cyclist-02-01-1.png"
+      "image": "src/assets/badges/scouts-cyclist-02-01-1.png"
   }
 ]

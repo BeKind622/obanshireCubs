@@ -98,7 +98,7 @@ app.post("/api/login", async (req, res) => {
     if (!passwordMatch) {
       return res
         .status(401)
-        .json({ error: "Invalid patient_number or password" });
+        .json({ error: "Invalid email or password" });
     }
 
     // Include is_admin in the token payload
@@ -262,3 +262,15 @@ app.post("/api/galleries", upload.single("imageData"), async (req, res) => {
   }
 });
 
+  
+//fetch users
+
+app.get('/api/users', async (req, res) => {
+  try {
+    const users = await User.find(); // Fetch all users
+    res.json(users); // Return the list of users
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});

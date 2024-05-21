@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const Login = ({ setIsLoggedIn }) => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -28,12 +28,13 @@ const Login = ({ setIsLoggedIn }) => {
       console.log('Login successful');
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("email", email);
-      setIsLoggedIn(true);
-      setErrorMessage(""); // Clear any previous error message
+     
+      // setErrorMessage(""); // Clear any previous error message
       navigate('/Dashboard');
     } catch (error) {
+      console.error (error);
       setErrorMessage("Invalid email or password. Please try again.");
-      navigate('/Dashboard');
+      // navigate('/Dashboard');
 
     }
   };

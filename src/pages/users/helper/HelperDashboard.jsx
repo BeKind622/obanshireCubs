@@ -1,26 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const HelperDashboard = () => {
-  const [users, setUsers] = useState([]);
 
+const HelperDashboard = () => {
+  const [users, setUsers] = useState([]); // State to hold the fetched users
+  
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:5000/api/users', {
+        if (!token) {
+          console.error('No token found');
+          return;
+        }
+
+        const response = await axios.get("http://localhost:5000/api/users", {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`, // Set the Authorization header with the token
           },
         });
-        setUsers(response.data);
+
+        setUsers(response.data); // Store the fetched users
       } catch (error) {
-        console.error('Error fetching user data:', error);
+        console.error('Error fetching users:', error);
       }
     };
 
-    fetchUsers();
-  }, []);
+    fetchUsers(); // Fetch users when the component is mounted
+  }, []); // Only run once when the component mounts
 
   return (
     <div className="flex flex-col">
@@ -45,9 +52,9 @@ const HelperDashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                {users.map((user, index) => (
-                  <tr key={user._id} className={index % 2 === 0 ? 'bg-gray-100 border-b' : 'bg-white border-b'}>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
+                {users.map((user) => (
+                  <tr key={user._id}>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"></td>
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                       {user.forename}
                     </td>
