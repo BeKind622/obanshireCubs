@@ -9,6 +9,9 @@ module.exports = {
       fontFamily: {
         custom:['CustomFont', 'kanit'],
       },
+      colors: {
+        logoYellow: '#ffae59'
+      }
     },
   },
   plugins: [],

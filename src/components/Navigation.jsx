@@ -26,7 +26,7 @@ const Navigation = ({ setIsLoggedIn }) => {
   }, [setIsLoggedIn]);
 
   return (
-    <div className="flex items-center justify-evenly border-gray-400 py-8 bg-white ">
+    <div className="flex items-center justify-evenly border-gray-400 py-8 bg-logoYellow">
       <nav>
         <section className="MOBILE-MENU flex lg:hidden">
           <div
@@ -56,7 +56,7 @@ const Navigation = ({ setIsLoggedIn }) => {
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             </div>
-            <ul className="flex flex-col items-center  justify-between min-h-[250px] ">
+            <ul className="flex flex-col items-center   justify-between min-h-[250px] ">
               <li className="border-b border-gray-400 my-8 uppercase align-middle">
                 <Link to="/" onClick={closeNav}>Home</Link>
               </li>
@@ -90,7 +90,8 @@ const Navigation = ({ setIsLoggedIn }) => {
           </div>
         </section>
 
-        <ul className="DESKTOP-MENU hidden space-x-8 lg:flex justify-evenly ">
+        <ul className="DESKTOP-MENU hidden space-x-8 lg:flex justify-center align-center">
+          <img src="src\assets\Obanshire_logo.png" alt="" className='max-h-16'/>
           <li>
             <Link to="/" >Home</Link>
           </li>

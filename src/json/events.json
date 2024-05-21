@@ -1,0 +1,29 @@
+{
+    "events": [
+      {
+        "id": 1,
+        "name": "Cub Scout Adventure Camp",
+        "date": "2024-06-15",
+        "location": "Pine Forest Park",
+        "description": "A weekend camp filled with outdoor activities, games, and campfire stories.",
+        "coverImage": "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      },
+      {
+        "id": 2,
+        "name": "Nature Exploration Day",
+        "date": "2024-07-10",
+        "location": "Green Meadow Nature Reserve",
+        "description": "A day dedicated to exploring the local flora and fauna, with guided nature walks and educational sessions.",
+        "coverImage": "https://images.unsplash.com/photo-1538614189725-71607d37a6e0?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      },
+      {
+        "id": 3,
+        "name": "Cub Scout Derby Race",
+        "date": "2024-08-20",
+        "location": "Hilltop Community Center",
+        "description": "An exciting race event where cub scouts can build and race their own derby cars, with prizes for the fastest and most creative designs.",
+        "coverImage": "https://images.unsplash.com/photo-1644667621453-bce89efd9669?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      }
+    ]
+  }
+  
