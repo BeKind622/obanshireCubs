@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import UserInformation from '../../components/UserInformation';
 import ParentDashboard from './Parent'; // Import ParentDashboard component
-import HelperDashboard from './helper/HelperDashboard';
 import CubDashboard from './CubDashboard'; // Import CubDashboard component
+import LeaderDashboard from './helper/LeaderDashboard';
 
 const Dashboard = () => {
   const user = UserInformation();
@@ -13,7 +13,7 @@ const Dashboard = () => {
       case 'parent':
         return <ParentDashboard />;
       case 'leader':
-        return <HelperDashboard />;
+        return <LeaderDashboard />;
       case 'scout':
         return <CubDashboard />;
       default:

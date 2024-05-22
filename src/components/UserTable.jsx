@@ -1,30 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-
-const HelperDashboard = () => {
+const UserTable = () => {
   const [users, setUsers] = useState([]); // State to hold the fetched users
-  
+  const [error, setError] = useState(null); // State to handle any error
+
   useEffect(() => {
     const fetchUsers = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        if (!token) {
-          console.error('No token found');
-          return;
+        try {
+          const token = localStorage.getItem('token');
+          if (!token) {
+            console.error('No token found');
+            setError('No token found');
+            return;
+          }
+      
+          const response = await axios.get("http://localhost:5000/api/users", {
+            headers: {
+              Authorization: `Bearer ${token}`, // Set the Authorization header with the token
+            },
+          });
+      
+          console.log('Fetched users:', response.data); // Log the response data
+      
+          // Check if the response data is an array
+          if (Array.isArray(response.data)) {
+            setUsers(response.data); // Set users if it's an array
+          } else {
+            console.error('Fetched data is not in the expected format');
+            setError('Invalid data format');
+          }
+        } catch (error) {
+          console.error('Error fetching users:', error);
+          setError('Error fetching users');
         }
-
-        const response = await axios.get("http://localhost:5000/api/users", {
-          headers: {
-            Authorization: `Bearer ${token}`, // Set the Authorization header with the token
-          },
-        });
-
-        setUsers(response.data); // Store the fetched users
-      } catch (error) {
-        console.error('Error fetching users:', error);
-      }
-    };
+      };
+     
 
     fetchUsers(); // Fetch users when the component is mounted
   }, []); // Only run once when the component mounts
@@ -52,9 +63,18 @@ const HelperDashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                {users.map((user) => (
-                  <tr key={user._id}>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"></td>
+                {error && (
+                  <tr>
+                    <td colSpan="4" className="text-sm text-red-500 text-center px-6 py-4">
+                      {error}
+                    </td>
+                  </tr>
+                )}
+                {users.map((user, index) => (
+                  <tr key={user._id} className="bg-white border-b">
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {index + 1}
+                    </td>
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                       {user.forename}
                     </td>
@@ -75,4 +95,4 @@ const HelperDashboard = () => {
   );
 };
 
-export default HelperDashboard;
+export default UserTable;
