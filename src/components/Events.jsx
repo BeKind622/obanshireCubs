@@ -19,28 +19,26 @@ const Events = () => {
   }, []);
 
   return (
-    <div className="flex flex-col mt-8">
-      {/* Meet the Team */}
-      <div className="container max-w-7xl px-4">
-        {/* Section Header */}
-        <div className="flex flex-wrap justify-center text-center mb-24">
-          <div className="w-full lg:w-6/12 px-4">
-            {/* Header */}
-            <h1 className="text-gray-900 text-4xl font-custom mb-8">Meet the Team</h1>
-            {/* Description */}
-          </div>
-        </div>
+    <>
+    
+    <div className="flex flex-col mt-8 bg">
+    
+      <h1 className='text-center'>Events</h1>
+     
+        <div className="flex mx-auto justify-evenly w-screen">
+          
         {filteredEvents.map(event => (
-          <div key={event.id} className="event container max-w-m">
-            <img src={event.coverImage} alt={event.name} className="event-image" />
-            <h3>{event.name}</h3>
+          <div key={event.id} className="event container max-w-xs max-h-xs">
+            <img src={event.coverImage} alt={event.name} className="event-image max-w-30 w-auto" />
+            <h3 className='font-semibold text-2xl'>{event.name}</h3>
             <p>{event.description}</p>
           </div>
-          
         ))}
         
+        </div>
+        
       </div>
-    </div>
+      </>
   );
 };
 
