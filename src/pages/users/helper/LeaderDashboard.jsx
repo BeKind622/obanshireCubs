@@ -3,7 +3,7 @@ import UserTable from "../../../components/UserTable";
 
 const LeaderDashboard = () => {
   return (
-    <UserTable />
+    <UserTable/>
   )
 }
 

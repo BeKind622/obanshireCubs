@@ -153,6 +153,40 @@ app.post("/api/login", async (req, res) => {
 //     res.status(500).json({ error: 'Internal server error' });
 //   }
 // });
+
+
+const authenticate = async (req, res, next) => {
+  const token = req.headers.authorization?.split(' ')[1];
+  if (!token) {
+    return res.status(401).send('Unauthorized');
+  }
+
+  try {
+    const decoded = jwt.verify(token, 'your-secret-key'); // Replace with your actual secret key
+    const user = await User.findById(decoded.id);
+    if (!user) {
+      return res.status(401).send('Unauthorized');
+    }
+    req.user = user;
+    next();
+  } catch (error) {
+    return res.status(401).send('Unauthorized');
+  }
+};
+
+app.post('/api/availability', authenticate, async (req, res) => {
+  const { availableDays } = req.body;
+  try {
+    await Availability.findOneAndUpdate(
+      { userId: req.user._id },
+      { availableDays },
+      { upsert: true, new: true }
+    );
+    res.status(200).send('Availability updated successfully');
+  } catch (error) {
+    res.status(500).send('Error updating availability');
+  }
+});
 // User Registration Endpoint
 app.post('/api/register', async (req, res) => {
   try {
@@ -265,12 +299,3 @@ app.post("/api/galleries", upload.single("imageData"), async (req, res) => {
   
 //fetch users
 
-app.get('/api/users', async (req, res) => {
-  try {
-    const users = await User.find(); // Fetch all users
-    res.json(users); // Return the list of users
-  } catch (error) {
-    console.error('Error fetching users:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
