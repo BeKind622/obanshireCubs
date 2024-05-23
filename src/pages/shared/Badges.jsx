@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './style.css';
 
 const Badges = () => {
   const [badges, setBadges] = useState([]);
@@ -32,6 +31,44 @@ const Badges = () => {
     setSearchTerm(event.target.value);
   };
 
+  const handlePrintBadge = (badgeId) => {
+    const badge = filteredBadges.find(badge => badge.id === badgeId);
+    if (badge) {
+      const printWindow = window.open('', '_blank');
+      printWindow.document.write(`
+        <html>
+          <head>
+            <title>${badge.name}</title>
+            <style>
+              /* Add your custom styles for printing here */
+              body {
+                font-family: Arial, sans-serif;
+              }
+              .badge-container {
+                margin: 20px;
+                padding: 20px;
+                border: 1px solid #ccc;
+              }
+              .badge-image {
+                max-width: 100px;
+                max-height: 100px;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="badge-container">
+              <img src="${badge.image}" alt="${badge.name}" class="badge-image" />
+              <h3>${badge.name}</h3>
+              <p>${badge.description}</p>
+            </div>
+          </body>
+        </html>
+      `);
+      printWindow.document.close();
+      printWindow.print();
+    }
+  };
+
   return (
     <div>
       
@@ -53,12 +90,15 @@ const Badges = () => {
     </div>
   </div>
 
-      <div className="badges-container">
+      <div className="container flex flex-wrap justify-evenly">
         {filteredBadges.map(badge => (
-          <div key={badge.id} className="badge">
+          <div key={badge.id} className="border border-gray-300 rounded-lg p-4 w-48 text-center shadow-md flex flex-col justify-between"
+           >
+            
             <img src={badge.image} alt={badge.name} className="badge-image" />
             <h3>{badge.name}</h3>
             <p>{badge.description}</p>
+            <button className="bg-blue text-white"onClick={() => handlePrintBadge(badge.id)}>Print!</button>
           </div>
         ))}
       </div>

@@ -4,6 +4,7 @@ import axios from "axios";
 const Gallery = () => {
     const [galleries, setGalleries] = useState([]);
     const [error, setError] = useState(null);
+    const [selectedImage, setSelectedImage] = useState(null);
 
     useEffect(() => {
         const fetchGalleries = async () => {
@@ -24,6 +25,14 @@ const Gallery = () => {
         fetchGalleries();
     }, []);
 
+    const handleImageClick = (imageUrl) => {
+        setSelectedImage(imageUrl);
+    };
+
+    const handleCloseModal = () => {
+        setSelectedImage(null);
+    };
+
     if (error) {
         return <div>Error: {error}</div>;
     }
@@ -34,15 +43,27 @@ const Gallery = () => {
                 {galleries.map((gallery) => {
                     const imageUrl = `http://localhost:5000/uploads/${gallery.imageData}`;
                     return (
-                        <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-lg" key={gallery._id}>
+                        <div
+                            className="group relative cursor-pointer items-center justify-center overflow-hidden hover:shadow-black/30 rounded-lg"
+                            key={gallery._id}
+                            onClick={() => handleImageClick(imageUrl)}
+                        >
                             <div className="h-96 w-72 rounded-lg">
                                 <h2>{gallery.imageName}</h2>
-                                <img className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125 rounded-lg" src={imageUrl} alt="activityPicture" />
+                                <img className="h-full w-full object-cover rounded-lg transition-transform duration-300 transform hover:scale-105" src={imageUrl} alt="activityPicture" />
                             </div>
                         </div>
                     );
                 })}
             </div>
+            {selectedImage && (
+                <div
+                    className="fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-50 flex items-center justify-center"
+                    onClick={handleCloseModal}
+                >
+                    <img className="max-h-full max-w-full" src={selectedImage} alt="selectedImage" />
+                </div>
+            )}
         </div>
     );
 };
