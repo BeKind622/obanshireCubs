@@ -90,7 +90,7 @@ const Badges = () => {
     </div>
   </div>
 
-      <div className="container flex flex-wrap justify-evenly">
+      <div className="container flex flex-wrap justify-evenly mx-auto my-9">
         {filteredBadges.map(badge => (
           <div key={badge.id} className="border border-gray-300 rounded-lg p-4 w-48 text-center shadow-md flex flex-col justify-between"
            >

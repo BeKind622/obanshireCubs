@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 // import { navigate } from 'history';
+import { Navigate } from 'react-router-dom';
+import UserInformation from './UserInformation';
 
 const Navigation = ({ setIsLoggedIn }) => {
   const [isLoggedIn, setIsLoggedInState] = useState(false);
   const location = useLocation();
   const [isNavOpen, setIsNavOpen] = useState(false);
-
+  const user = UserInformation();
   const closeNav = () => {
     setIsNavOpen(false);
   };
@@ -15,7 +17,7 @@ const Navigation = ({ setIsLoggedIn }) => {
     setIsLoggedInState(false);
     setIsLoggedIn(false);
     localStorage.removeItem('token');
-    navigate('/');
+    Navigate('/');
   };
 
   useEffect(() => {

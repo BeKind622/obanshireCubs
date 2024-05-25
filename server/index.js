@@ -53,7 +53,9 @@ app.get("/api/users", async (req, res) => {
                 email: user.email,
                 forename: user.forename,
                 surname: user.surname,
-                userType: user.userType,  };
+                userType: user.userType, 
+                disclosure: user.disclosure, 
+                availability: user.availability};
  
 
 
@@ -118,52 +120,14 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
-// User Registration Endpoint
-// app.post('/api/register', async (req, res) => {
-//   try {
-//     // Extract registration data from request body
-//     const { email, password, forename} = req.body;
-
-//     // Check if the user already exists
-//     const existingUser = await User.findOne({ email });
-//     if (existingUser) {
-//       return res.status(400).json({ error: 'User already exists' });
-//     }
-
-//     // Hash the password
-//     const hashedPassword = await bcrypt.hash(password, 10);
-
-//     // Create a new user document
-//     const newUser = new User({
-//       email,
-//       password: hashedPassword,
-//       forename,
-//       surname,
-//       userType,
-//       // Add any additional fields as needed
-//     });
-
-//     // Save the new user document to the database
-//     await newUser.save();
-
-//     // Respond with success message
-//     res.status(201).json({ message: 'User registered successfully' });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: 'Internal server error' });
-//   }
-// });
-
-
 const authenticate = async (req, res, next) => {
   const token = req.headers.authorization?.split(' ')[1];
   if (!token) {
     return res.status(401).send('Unauthorized');
   }
-
   try {
     const decoded = jwt.verify(token, 'your-secret-key'); // Replace with your actual secret key
-    const user = await User.findById(decoded.id);
+    const user = await User.findById(decoded.userId);
     if (!user) {
       return res.status(401).send('Unauthorized');
     }
@@ -174,19 +138,42 @@ const authenticate = async (req, res, next) => {
   }
 };
 
-app.post('/api/availability', authenticate, async (req, res) => {
-  const { availableDays } = req.body;
+// const authenticate = async (req, res, next) => {
+//   const token = req.headers.authorization?.split(' ')[1];
+//   if (!token) {
+//     return res.status(401).send('Unauthorized');
+//   }
+
+//   try {
+//     const decoded = jwt.verify(token, 'your-secret-key'); // Replace with your actual secret key
+//     const user = await User.findById(decoded.id);
+//     if (!user) {
+//       return res.status(401).send('Unauthorized');
+//     }
+//     req.user = user;
+//     next();
+//   } catch (error) {
+//     return res.status(401).send('Unauthorized');
+//   }
+// };
+
+// helper availability code
+app.post('/api/users/availability', authenticate, async (req, res) => {
+  const { availability } = req.body;
   try {
-    await Availability.findOneAndUpdate(
-      { userId: req.user._id },
-      { availableDays },
-      { upsert: true, new: true }
-    );
+    if (!Array.isArray(availability)) {
+      return res.status(400).send('Availability should be an array of dates');
+    }
+    // Add new availability dates to the user's existing availability
+    req.user.availability.push(...availability);
+    await req.user.save();
     res.status(200).send('Availability updated successfully');
   } catch (error) {
+    console.log(error);
     res.status(500).send('Error updating availability');
   }
 });
+
 // User Registration Endpoint
 app.post('/api/register', async (req, res) => {
   try {
@@ -209,12 +196,15 @@ app.post('/api/register', async (req, res) => {
       forename,
       surname,
       userType,
+      disclosure,
+      availability,
       // Add any additional fields as needed
     });
 
     // Save the new user document to the database
-    await newUser.save();
-
+    await newUser.save()
+    .then(user => console.log('User saved:', user))
+    .catch(error => console.error('Error saving user:', error));
     // Respond with success message
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
@@ -297,5 +287,4 @@ app.post("/api/galleries", upload.single("imageData"), async (req, res) => {
 });
 
   
-//fetch users
 
