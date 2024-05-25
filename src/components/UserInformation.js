@@ -1,9 +1,9 @@
-// UserInformation.js
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const UserInformation = () => {
   const [user, setUser] = useState(null);
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -30,15 +30,7 @@ const UserInformation = () => {
     fetchUserData();
   }, []);
 
-  
   return user;
-
-  
-
- 
-
 };
-
-
 
 export default UserInformation;

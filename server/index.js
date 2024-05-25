@@ -34,33 +34,29 @@ app.get("/api/users", async (req, res) => {
     }
 
     // Verify the token
-    jwt.verify(token, "your-secret-key", async (err, decoded) => {
+    jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, decoded) => {
       if (err) {
         return res.status(401).json({ error: "Unauthorized: Invalid token" });
       }
 
       // The decoded.userId should match the structure used in jwt.sign during login
-      const user = await User.findById(decoded.userId)
+      const user = await User.findById(decoded.userId);
 
       if (!user) {
         return res.status(404).json({ error: "User not found" });
       }
 
-      // Return data only for the authenticated user
-    // Inside the /api/users route
-            const formattedUser = {
-                _id: user._id,
-                email: user.email,
-                forename: user.forename,
-                surname: user.surname,
-                userType: user.userType, 
-                disclosure: user.disclosure, 
-                availability: user.availability};
- 
+      const formattedUser = {
+        _id: user._id,
+        email: user.email,
+        forename: user.forename,
+        surname: user.surname,
+        userType: user.userType,
+        disclosure: user.disclosure,
+        availability: user.availability
+      };
 
-
-res.json(formattedUser);
-
+      res.json(formattedUser);
     });
   } catch (error) {
     console.error(error);
@@ -72,50 +68,28 @@ res.json(formattedUser);
 
 app.post("/api/login", async (req, res) => {
   try {
-    console.log("Request body:", req.body);
     const { email, password } = req.body;
-
-    console.log("Received email:", email);
-    console.log("Received password:", password);
-
-    console.log("Before user check");
-    const user = await User.findOne({ email: email });
-    console.log("Retrieved user:", user);
-
-    if (user) {
-      console.log("Found user:", user);
-    } else {
-      console.log("User not found");
-    }
-
+    console.log(`Login attempt with email: ${email}`);
+    
+    const user = await User.findOne({ email });
     if (!user) {
-      return res
-        .status(401)
-        .json({ error: "Invalid email or password" });
+      console.log('User not found');
+      return res.status(401).json({ error: "Invalid email or password" });
     }
 
     const passwordMatch = await bcrypt.compare(password, user.password);
-    console.log("Password match:", passwordMatch);
-
     if (!passwordMatch) {
-      return res
-        .status(401)
-        .json({ error: "Invalid email or password" });
+      console.log('Password does not match');
+      return res.status(401).json({ error: "Invalid email or password" });
     }
 
-    // Include is_admin in the token payload
-    const tokenPayload = {
-      userId: user._id,
-    };
+    const tokenPayload = { userId: user._id };
+    const token = jwt.sign(tokenPayload, process.env.JWT_SECRET_KEY, { expiresIn: "1h" });
 
-    const token = jwt.sign(tokenPayload, "your-secret-key", {
-      expiresIn: "1h",
-    });
-
-    // Include is_admin in the response
+    console.log('Login successful');
     res.json({ token });
   } catch (error) {
-    console.error(error);
+    console.error('Internal Server Error:', error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
@@ -126,7 +100,7 @@ const authenticate = async (req, res, next) => {
     return res.status(401).send('Unauthorized');
   }
   try {
-    const decoded = jwt.verify(token, 'your-secret-key'); // Replace with your actual secret key
+    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
     const user = await User.findById(decoded.userId);
     if (!user) {
       return res.status(401).send('Unauthorized');
@@ -164,7 +138,6 @@ app.post('/api/users/availability', authenticate, async (req, res) => {
     if (!Array.isArray(availability)) {
       return res.status(400).send('Availability should be an array of dates');
     }
-    // Add new availability dates to the user's existing availability
     req.user.availability.push(...availability);
     await req.user.save();
     res.status(200).send('Availability updated successfully');
@@ -177,41 +150,32 @@ app.post('/api/users/availability', authenticate, async (req, res) => {
 // User Registration Endpoint
 app.post('/api/register', async (req, res) => {
   try {
-    // Extract registration data from request body
-    const { email, password, forename, surname, userType } = req.body; // Include surname and userType
-
-    // Check if the user already exists
+    const { email, password, forename, surname, userType } = req.body;
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ error: 'User already exists' });
     }
 
-    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Create a new user document
     const newUser = new User({
       email,
       password: hashedPassword,
       forename,
       surname,
       userType,
-      disclosure,
-      availability,
-      // Add any additional fields as needed
+      disclosure: false, // Initialize disclosure
+      availability: [], // Initialize availability as an empty array
     });
 
-    // Save the new user document to the database
-    await newUser.save()
-    .then(user => console.log('User saved:', user))
-    .catch(error => console.error('Error saving user:', error));
-    // Respond with success message
+    await newUser.save();
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+  
 
 
 
