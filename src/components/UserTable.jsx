@@ -7,35 +7,34 @@ const UserTable = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-        try {
-          const token = localStorage.getItem('token');
-          if (!token) {
-            console.error('No token found');
-            setError('No token found');
-            return;
-          }
-      
-          const response = await axios.get("http://localhost:5000/api/users", {
-            headers: {
-              Authorization: `Bearer ${token}`, // Set the Authorization header with the token
-            },
-          });
-      
-          console.log('Fetched users:', response.data); // Log the response data
-      
-          // Check if the response data is an array
-          if (Array.isArray(response.data)) {
-            setUsers(response.data); // Set users if it's an array
-          } else {
-            console.error('Fetched data is not in the expected format');
-            setError('Invalid data format');
-          }
-        } catch (error) {
-          console.error('Error fetching users:', error);
-          setError('Error fetching users');
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          console.error('No token found');
+          setError('No token found');
+          return;
         }
-      };
-     
+
+        const response = await axios.get("http://localhost:5000/api/users", {
+          headers: {
+            Authorization: `Bearer ${token}`, // Set the Authorization header with the token
+          },
+        });
+
+        console.log('Fetched users:', response.data); // Log the response data
+
+        // Check if the response data is an array
+        if (Array.isArray(response.data)) {
+          setUsers(response.data); // Set users if it's an array
+        } else {
+          console.error('Fetched data is not in the expected format');
+          setError('Invalid data format');
+        }
+      } catch (error) {
+        console.error('Error fetching users:', error);
+        setError('Error fetching users');
+      }
+    };
 
     fetchUsers(); // Fetch users when the component is mounted
   }, []); // Only run once when the component mounts
