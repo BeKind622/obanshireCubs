@@ -5,6 +5,8 @@ import AvailabilityCalendar from '../../components/Calendar';
 const ParentDashboard = () => {
   const { user, error } = UserInformation(); // Destructure to get user and error
 
+  console.log('User in ParentDashboard:', user); // Log user data
+
   if (error) {
     return <p className='text-black'>{error}</p>;
   }

@@ -22,6 +22,7 @@ const UserInformation = () => {
         });
 
         if (response && response.data) {
+          console.log('User data fetched:', response.data); // Log user data
           setUser(response.data);
         } else {
           console.error('Invalid response from the server:', response);
@@ -36,7 +37,7 @@ const UserInformation = () => {
     fetchUserData();
   }, []);
 
-  return { user, error }; // Return both user and error
+  return { user, error };
 };
 
 export default UserInformation;

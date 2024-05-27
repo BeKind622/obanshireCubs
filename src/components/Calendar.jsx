@@ -10,6 +10,10 @@ const AvailabilityCalendar = () => {
   const [selectedDates, setSelectedDates] = useState([]);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    console.log('User in AvailabilityCalendar:', user); // Log user data
+  }, [user]);
+
   const onDateChange = (date) => {
     setSelectedDates(date);
   };
