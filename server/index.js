@@ -23,7 +23,8 @@ mongoose.connection.on('connected', () => {
   console.log('Connected to MongoDB');
 });
 
-// Route to get user data - this code displays info for logged in user - working
+// code to fetch user data
+
 // app.get("/api/users", async (req, res) => {
 //   try {
 //     // Extract the token from the request headers
@@ -33,11 +34,15 @@ mongoose.connection.on('connected', () => {
 //       return res.status(401).json({ error: "Unauthorized: No token provided" });
 //     }
 
+//     console.log('Token:', token); // Debugging log
+
 //     // Verify the token
 //     jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, decoded) => {
 //       if (err) {
 //         return res.status(401).json({ error: "Unauthorized: Invalid token" });
 //       }
+
+//       console.log('Decoded token:', decoded); // Debugging log
 
 //       // The decoded.userId should match the structure used in jwt.sign during login
 //       const user = await User.findById(decoded.userId);
@@ -56,6 +61,8 @@ mongoose.connection.on('connected', () => {
 //         availability: user.availability
 //       };
 
+//       console.log('User data:', formattedUser); // Debugging log
+
 //       res.json(formattedUser);
 //     });
 //   } catch (error) {
@@ -63,13 +70,13 @@ mongoose.connection.on('connected', () => {
 //     res.status(500).json({ error: 'Internal Server Error' });
 //   }
 // });
-
 app.get("/api/users", async (req, res) => {
   try {
     // Extract the token from the request headers
     const token = req.headers.authorization?.split(" ")[1];
 
     if (!token) {
+      console.log('Unauthorized: No token provided');
       return res.status(401).json({ error: "Unauthorized: No token provided" });
     }
 
@@ -78,6 +85,7 @@ app.get("/api/users", async (req, res) => {
     // Verify the token
     jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, decoded) => {
       if (err) {
+        console.log('Unauthorized: Invalid token');
         return res.status(401).json({ error: "Unauthorized: Invalid token" });
       }
 
@@ -87,9 +95,28 @@ app.get("/api/users", async (req, res) => {
       const user = await User.findById(decoded.userId);
 
       if (!user) {
+        console.log('User not found');
         return res.status(404).json({ error: "User not found" });
       }
 
+      // If the user is a leader, return all users
+      if (user.userType === 'leader') {
+        console.log('Fetching all users data...'); // Debugging log
+        const users = await User.find();
+        const formattedUsers = users.map(user => ({
+          _id: user._id,
+          email: user.email,
+          forename: user.forename,
+          surname: user.surname,
+          userType: user.userType,
+          disclosure: user.disclosure,
+          availability: user.availability
+        }));
+        console.log('All users data fetched:', formattedUsers); // Debugging log
+        return res.json(formattedUsers);
+      }
+
+      // Otherwise, return the logged-in user's data
       const formattedUser = {
         _id: user._id,
         email: user.email,

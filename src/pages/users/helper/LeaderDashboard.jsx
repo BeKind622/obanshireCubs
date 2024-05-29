@@ -1,11 +1,14 @@
 import React from "react";
 import UserTable from "../../../components/UserTable";
 
-const LeaderDashboard = () => {
-  return (
-    
-    <UserTable/>
-  )
-}
+const LeaderDashboard = ({ users }) => {
+  console.log('LeaderDashboard users:', users);
 
-export default LeaderDashboard
+  return (
+    <>
+      {users && <UserTable users={users} />}
+    </>
+  );
+};
+
+export default LeaderDashboard;

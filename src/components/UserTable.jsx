@@ -1,11 +1,14 @@
 import React from 'react';
-import AllUserInformation from './AllUserInformation'; // Ensure correct path to the file
+import UserInformation from './UserInformation'; // Ensure correct path to the file
 
-const UserTable = () => {
-  const { users, error } = AllUserInformation(); // Fetch all users using the custom hook
-  const token = localStorage.getItem('token');
-  console.log('Token found:', token); // Debugging log
-  
+const UserTable = ({ users }) => {
+  if (!users || users.length === 0) {
+    console.error('No users provided or users array is empty:', users);
+    return <div>No users to display</div>;
+  }
+
+  console.log('Rendering UserTable with users:', users);
+
   return (
     <div className="flex flex-col">
       <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
@@ -26,16 +29,15 @@ const UserTable = () => {
                   <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                     User type
                   </th>
+                  <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                    Disclosure
+                  </th>
+                  <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                    Availability
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                {error && (
-                  <tr>
-                    <td colSpan="4" className="text-sm text-red-500 text-center px-6 py-4">
-                      {error}
-                    </td>
-                  </tr>
-                )}
                 {users.map((user, index) => (
                   <tr key={user._id} className="bg-white border-b">
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -50,6 +52,19 @@ const UserTable = () => {
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                       {user.userType}
                     </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {user.disclosure}
+                    </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      <ul>
+                        {user.availability?.map((date, index) => (
+                          <li key={index} className="text-gray-700">
+                            {new Date(date).toLocaleDateString()}
+                          </li>
+                        ))}
+                      </ul>
+                    </td>
+                    
                   </tr>
                 ))}
               </tbody>
