@@ -13,8 +13,9 @@ const Login = () => {
     const token = localStorage.getItem("token");
     if (token) {
       setAlreadyLoggedInMessage("User already logged in.");
+      navigate('/Dashboard'); // Redirect if already logged in
     }
-  }, []);
+  }, [navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -27,6 +28,7 @@ const Login = () => {
       console.log('Login successful');
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("email", email);
+      
       navigate('/Dashboard');
     } catch (error) {
       console.error(error);

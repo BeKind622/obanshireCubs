@@ -11,7 +11,6 @@ const ParentDashboard = () => {
   return (
     <>
       {user ? (
-      
 <AvailabilityCalendar/>
 ) : (
   <p>Loading user information...</p>

@@ -1,45 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import AllUserInformation from './AllUserInformation'; // Ensure correct path to the file
 
 const UserTable = () => {
-  const [users, setUsers] = useState([]); // State to hold the fetched users
-  const [error, setError] = useState(null); // State to handle any error
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-        try {
-          const token = localStorage.getItem('token');
-          if (!token) {
-            console.error('No token found');
-            setError('No token found');
-            return;
-          }
-      
-          const response = await axios.get("http://localhost:5000/api/users", {
-            headers: {
-              Authorization: `Bearer ${token}`, // Set the Authorization header with the token
-            },
-          });
-      
-          console.log('Fetched users:', response.data); // Log the response data
-      
-          // Check if the response data is an array
-          if (Array.isArray(response.data)) {
-            setUsers(response.data); // Set users if it's an array
-          } else {
-            console.error('Fetched data is not in the expected format');
-            setError('Invalid data format');
-          }
-        } catch (error) {
-          console.error('Error fetching users:', error);
-          setError('Error fetching users');
-        }
-      };
-     
-
-    fetchUsers(); // Fetch users when the component is mounted
-  }, []); // Only run once when the component mounts
-
+  const { users, error } = AllUserInformation(); // Fetch all users using the custom hook
+  const token = localStorage.getItem('token');
+  console.log('Token found:', token); // Debugging log
+  
   return (
     <div className="flex flex-col">
       <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">

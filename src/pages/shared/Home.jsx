@@ -36,21 +36,50 @@ const Home = () => {
     </div>
   </div>
 </div>
-<div className="bg-gray-100 flex flex-col h-full">
-  <div className="bg-gray-600 btf-image-container">
+<div className='flex mx-auto justify-evenly py-6'>
+<div className="bg-gray-100 flex flex-col  max-w-80 h-full">
+  <div className="bg-gray-600">
     <Link to="/Badges" aria-hidden="true" role="presentation" tabIndex="-1">
-      <img src="https://prod-cms.scouts.org.uk/media/20744/badges.jpg" className="btf-image" alt="Badges" />
+      <img src="https://prod-cms.scouts.org.uk/media/20744/badges.jpg" className="w-full h-auto" alt="Badges" />
     </Link>
   </div>
   <div className="flex flex-col h-full p-4">
     <Link to="/Badges" className="text-lg mb-1 text-gray-900">Badges</Link>
-    <p className="mt-2 btf-text text-gray-700">
+    <p className="mt-2 text-gray-700">
       Master something you love, or try something shiny and new. These badges allow a young person to gain whichever badge is appropriate to the level they have reached.
     </p>
     <Link to="/Badges" className="text-gray-900 font-bold mt-auto">Explore badges &gt;</Link>
   </div>
 </div>
-
+<div className="bg-gray-100 flex flex-col max-w-80 h-full">
+  <div className="bg-gray-600">
+    <Link to="/Games" aria-hidden="true" role="presentation" tabIndex="-1">
+      <img src="https://images.unsplash.com/photo-1635514569146-9a9607ecf303?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="w-full h-auto" alt="Games" />
+    </Link>
+  </div>
+  <div className="flex flex-col h-full p-4">
+    <Link to="/Games" className="text-lg mb-1 text-gray-900">Games</Link>
+    <p className="mt-2 text-gray-700">
+      Master something you love, or try something shiny and new. These badges allow a young person to gain whichever badge is appropriate to the level they have reached.
+    </p>
+    <Link to="/Games" className="text-gray-900 font-bold mt-auto">Explore games &gt;</Link>
+  </div>
+</div>
+<div className="bg-gray-100 flex flex-col max-w-80 h-full">
+  <div className="bg-gray-600">
+    <Link to="/About" aria-hidden="true" role="presentation" tabIndex="-1">
+      <img src="https://plus.unsplash.com/premium_photo-1663040392316-70559a2e0e92?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="w-full h-auto" alt="About" />
+    </Link>
+  </div>
+  <div className="flex flex-col h-full p-4">
+    <Link to="/About" className="text-lg mb-1 text-gray-900">About</Link>
+    <p className="mt-2 text-gray-700">
+      Master something you love, or try something shiny and new. These badges allow a young person to gain whichever badge is appropriate to the level they have reached.
+    </p>
+    <Link to="/About" className="text-gray-900 font-bold mt-auto">Explore about &gt;</Link>
+  </div>
+</div>
+</div>
 
 {<FAQ/>}
     </>

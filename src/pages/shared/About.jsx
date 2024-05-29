@@ -7,7 +7,6 @@ const About = () => {
 
     return (
     <>
-    {<Events/>}
 
     <div className="hero py-20 bg-slate-200 relative before:block before:absolute before:bg-black before:h-full before:w-full before:top-0 before:z-10 before:opacity-70">
   <img src="https://picsum.photos/1920/850" alt="" className="absolute top-0 left-0 h-full w-full object-cover" />
@@ -36,6 +35,8 @@ Home        </button></Link>
   </div>
   
 </div>    
+{<Events/>}
+
 <div className="flex items-center justify-center min-h-screen bg-logoYellow ">
 <div className="flex flex-col  mt-8  ">
       {/* Meet the Team */}

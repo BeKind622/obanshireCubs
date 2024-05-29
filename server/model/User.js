@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
   userType: { type: String, required: true },
   forename: { type: String, required: true },
   surname: { type: String, required: true },
-  disclosure: { type: Boolean, required: true }, // Added disclosure field
+  disclosure: { type: String, required: true }, // Added disclosure field
   availability: { type: [Date], required: true } // Define availability as an array of Date
 
   // Add other fields as needed
