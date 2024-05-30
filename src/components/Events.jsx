@@ -29,10 +29,10 @@ const Events = () => {
           
         {filteredEvents.map(event => (
           <div key={event.id} className="event container max-w-xs max-h-xs flex flex-col justify-between">
-            <img src={event.coverImage} alt={event.name} className="event-image max-h-48 w-auto" />
+            <img src={event.coverImage} alt={event.name} className="event-image max-h-48 w-auto"  />
             <h3 className='font-semibold text-2xl'>{event.name}</h3>
-            <p>{event.description}</p>
             <p className='font-semibold'>{event.date}</p>
+            <p>{event.description}</p>
           </div>
         ))}
         
