@@ -25,13 +25,14 @@ const Events = () => {
     
       <h1 className='text-center'>Events</h1>
      
-        <div className="flex mx-auto justify-evenly w-screen">
+        <div className="flex mx-auto justify-evenly  flex-wrap w-screen">
           
         {filteredEvents.map(event => (
-          <div key={event.id} className="event container max-w-xs max-h-xs">
-            <img src={event.coverImage} alt={event.name} className="event-image max-w-30 w-auto" />
+          <div key={event.id} className="event container max-w-xs max-h-xs flex flex-col justify-between">
+            <img src={event.coverImage} alt={event.name} className="event-image max-h-48 w-auto" />
             <h3 className='font-semibold text-2xl'>{event.name}</h3>
             <p>{event.description}</p>
+            <p className='font-semibold'>{event.date}</p>
           </div>
         ))}
         

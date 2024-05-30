@@ -48,7 +48,8 @@ const AvailabilityCalendar = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="p-6 bg-gray-100  flex flex-col justify-evenly md:flex-row mx-auto">
+      <div>
       <h2 className="text-2xl font-semibold mb-4">Select Your Availability</h2>
       <form onSubmit={handleSubmit} className="mb-8">
         <Calendar
@@ -69,6 +70,7 @@ const AvailabilityCalendar = () => {
           Submit Availability
         </button>
       </form>
+      </div>
 
       {existingAvailability.length > 0 && (
         <div>

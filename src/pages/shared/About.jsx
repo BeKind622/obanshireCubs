@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import FAQ from "../../components/FAQ";
 import Events from "../../components/Events";
+import Testimonials from "../../components/Testimonials";
 
 const About = () => {
 
@@ -198,6 +199,7 @@ Home        </button></Link>
       </div>
     </div>
     </div>
+    {<Testimonials/>}
 {<FAQ/>}
     </>
     )

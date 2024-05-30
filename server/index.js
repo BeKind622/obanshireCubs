@@ -235,7 +235,7 @@ app.post('/api/register', async (req, res) => {
       forename,
       surname,
       userType,
-      disclosure: false, // Initialize disclosure
+      disclosure: 'false', // Initialize disclosure
       availability: [], // Initialize availability as an empty array
     });
 

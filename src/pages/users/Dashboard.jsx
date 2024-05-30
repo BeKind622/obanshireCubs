@@ -64,8 +64,8 @@ const Dashboard = () => {
       {user ? (
         <div>
           <div className="max-w-xl py-5 mx-8">
-            <h1 className="font-black text-blue-900 text-4xl mb-4">Welcome, {user.forename}</h1>
-          </div>
+
+      </div>
           {renderDashboard()}
         </div>
       ) : (
