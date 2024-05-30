@@ -26,8 +26,17 @@ const Register = ({ setIsLoggedIn }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validateEmail(formData.email)) {
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
     try {
       const response = await axios.post('http://localhost:5000/api/register', formData);
       console.log(response.data);
