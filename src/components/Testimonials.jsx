@@ -2,7 +2,7 @@ import React from 'react';
 
 const TestimonialPage = () => {
   return (
-    <div className="w-full bg-indigo-100">
+    <div className="w-maxWidth bg-indigo-100">
       <div className="flex flex-col lg:grid lg:gap-4 2xl:gap-6 lg:grid-cols-4 2xl:row-span-2 2xl:pb-8 ml-2 pt-4 px-6">
         
         {/* Testimonial about Daniel Clifford */}
@@ -24,12 +24,12 @@ const TestimonialPage = () => {
           <div className="mx-8 2xl:mx-10 my-10">
             <img className="w-10 h-10 2xl:w-20 2xl:h-20 rounded-full border-2 -ml-1 -mt-2 lg:-mt-4" src="https://images.pexels.com/photos/634021/pexels-photo-634021.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
             <h1 className="text-gray-800 text-base 2xl:text-2xl pl-12 2xl:pl-24 -mt-8 md:-mt-10 2xl:-mt-16">Jonathan Walters</h1>
-            <h2 className="text-gray-600 text-opacity-50 text-base 2xl:text-2xl pl-12 2xl:pl-24">Parent</h2>
+            <h2 className="text-gray-900 text-opacity-50 text-base 2xl:text-2xl pl-12 2xl:pl-24">Parent</h2>
           </div>
           <div className="-mt-8 mx-1 lg:mx-2">
-            <p className="text-gray text-lg lg:text-xl 2xl:text-4xl font-semibold pt-1 px-6 2xl:px-8 lg:pl-5 lg:pr-8">The team was very supportive and kept my child motivated</p>
+            <p className="text-gray text-lg lg:text-xl 2xl:text-4xl text-black font-semibold pt-1 px-6 2xl:px-8 lg:pl-5 lg:pr-8">The team was very supportive and kept my child motivated</p>
             <br />
-            <p className="text-gray text-opacity-50 font-medium text-sm 2xl:text-3xl pl-6 lg:pl-5 pr-4 -mt-1 lg:mt-6 2xl:mt-2 2xl:px-8">"My son has had an overall wonderful and rewarding experience with the scouts. He has grown so much in confidence and skills. I highly recommend this program to other parents."</p>
+            <p className="text-gray text-opacity-50 font-medium text-black text-sm 2xl:text-3xl pl-6 lg:pl-5 pr-4 -mt-1 lg:mt-6 2xl:mt-2 2xl:px-8">"My son has had an overall wonderful and rewarding experience with the scouts. He has grown so much in confidence and skills. I highly recommend this program to other parents."</p>
           </div>
         </div>
         

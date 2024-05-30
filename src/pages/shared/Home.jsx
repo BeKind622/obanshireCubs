@@ -36,7 +36,7 @@ const Home = () => {
     </div>
   </div>
 </div>
-<div className='flex mx-auto justify-evenly flex-wrap py-6 my-6'>
+<div className='flex mx-auto justify-evenly flex-wrap py-6 my-6 bg-logoYellow'>
 <div className="bg-gray-100 rounded-xl flex p-2 flex-col  max-w-80 h-full ">
   <div className="bg-gray-600">
     <Link to="/Badges" aria-hidden="true" role="presentation" tabIndex="-1">
@@ -65,7 +65,7 @@ const Home = () => {
     <Link to="/Games" className="text-gray-900 font-bold mt-auto">Explore games &gt;</Link>
   </div>
 </div>
-<div className="bg-gray-100 rounded-xl flex m-2 flex-col max-w-80 h-full">
+<div className="bg-gray-100 rounded-xl flex p-2 flex-col max-w-80 h-full">
   <div className="bg-gray-600">
     <Link to="/About" aria-hidden="true" role="presentation" tabIndex="-1">
       <img src="https://plus.unsplash.com/premium_photo-1663040392316-70559a2e0e92?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="w-full h-auto" alt="About" />
