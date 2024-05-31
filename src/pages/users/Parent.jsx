@@ -15,8 +15,8 @@ const ParentDashboard = () => {
             <img src="https://picsum.photos/1920/850" alt="" className="absolute top-0 left-0 h-full w-full object-cover" />
             <div className="relative z-20 mx-auto max-w-screen-xl flex gap-20 justify-center">
               <div className="w-2/3">
-                <span className="text-orange-600 uppercase font-medium mb-4 block">Obanshire Cub scouts</span>
-                <h1 className="text-7xl text-white font-extrabold">Parent Dashboard</h1>
+                <span className="text-orange-600 font-customFont uppercase font-medium mb-4 block">Obanshire Cub scouts</span>
+                <h1 className="text-7xl text-white font-customFont font-extrabold">Parent Dashboard</h1>
                 <div className="flex items-center gap-3 text-white my-6 text-4xl"></div>
               </div>
             </div>

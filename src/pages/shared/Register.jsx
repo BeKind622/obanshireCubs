@@ -50,9 +50,9 @@ const Register = ({ setIsLoggedIn }) => {
 
   return (
     <>
-      <div className="min-h-screen bg-purple-400 flex justify-center items-center">
-        <div className="absolute w-48 h-48 rounded-xl bg-purple-300 -bottom-6 -right-10 transform rotate-12 hidden md:block"></div>
-        <form className="py-12 px-12 bg-white rounded-2xl shadow-xl z-20" onSubmit={handleSubmit}>
+      <div className="min-h-screen  flex justify-center items-center">
+        <div className="absolute w-48 h-48 rounded-xl  -bottom-6 -right-10 transform rotate-12 hidden md:block"></div>
+        <form className="py-12 px-12  rounded-2xl shadow-xl z-20" onSubmit={handleSubmit}>
           {alreadyLoggedInMessage ? (
             <p className="text-green-500 mb-4">{alreadyLoggedInMessage}</p>
           ) : (
@@ -109,7 +109,7 @@ const Register = ({ setIsLoggedIn }) => {
                 </select>
               </div>
               <div className="text-center mt-6">
-                <button className="w-full py-2 text-xl text-white bg-purple-400 rounded-lg hover:bg-purple-500 transition-all">
+                <button className="w-full py-2 text-xl bg-orange-700 text-white rounded-lg  transition-all">
                   Create Account
                 </button>
                 <p className="mt-4 text-sm">Already Have An Account? <span className="underline cursor-pointer" onClick={() => navigate('/login')}>Sign In</span></p>
@@ -118,7 +118,7 @@ const Register = ({ setIsLoggedIn }) => {
             </>
           )}
         </form>
-        <div className="w-20 h-40 absolute bg-purple-300 rounded-full bottom-20 left-10 transform rotate-45 hidden md:block"></div>
+        <div className="w-20 h-40 absolute  rounded-full bottom-20 left-10 transform rotate-45 hidden md:block"></div>
       </div>
     </>
   );

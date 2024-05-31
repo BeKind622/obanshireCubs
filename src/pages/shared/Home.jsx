@@ -14,7 +14,7 @@ const Home = () => {
   <div className="relative z-20 mx-auto max-w-screen-xl flex gap-20 justify-center">
     <div className="w-2/3">
       <span className="text-orange-600 uppercase font-medium mb-4 block">EXPLORE. DISCOVER. TRAVEL</span>
-      <h1 className="text-7xl text-white font-extrabold">Obanshire cub scouts</h1>
+      <h1 className="text-7xl text-white font-customFont font-extrabold">Obanshire cub scouts</h1>
       {/* <h2>{user.userType}</h2> */}
       <div className="flex items-center gap-3 text-white my-6 text-4xl">
       

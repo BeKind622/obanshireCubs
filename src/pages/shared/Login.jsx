@@ -71,7 +71,7 @@ const Login = () => {
               <label htmlFor="remember" className="text-gray-600 ml-2">Remember Me</label>
               <button
                 type="submit"
-                className="w-full bg-blue-900 text-white p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-black focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300"
+                className="w-full bg-orange-700 text-white p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-black focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300"
               >
                 Login
               </button>
